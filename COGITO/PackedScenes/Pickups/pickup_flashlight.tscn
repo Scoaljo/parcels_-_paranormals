@@ -10,6 +10,7 @@
 script = ExtResource("3_0bl2i")
 inventory_item = ExtResource("2_sm7gp")
 quantity = 1
+origin_index = -1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbp4w"]
 albedo_color = Color(0.0392157, 0.0431373, 0.0745098, 1)

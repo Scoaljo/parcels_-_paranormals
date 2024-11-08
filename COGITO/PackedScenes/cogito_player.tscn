@@ -32,15 +32,10 @@ size = Vector3(0.6, 0.7, 0.6)
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_af0lu"]
 streams_count = 5
 stream_0/stream = ExtResource("12_ug3wt")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("13_fyfhw")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("14_opnk5")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("15_wtp0a")
-stream_3/weight = 1.0
 stream_4/stream = ExtResource("16_buq0c")
-stream_4/weight = 1.0
 
 [node name="CogitoPlayer" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -98,7 +93,6 @@ libraries = {
 }
 
 [node name="Camera" type="Camera3D" parent="Neck/Head/Eyes"]
-transform = Transform3D(1, 0, 0, 0, 1, 4.46638e-06, 0, -4.46638e-06, 1, 0, 0, 0)
 
 [node name="InteractionRaycast" type="RayCast3D" parent="Neck/Head/Eyes/Camera"]
 target_position = Vector3(0, 0, -2.5)
