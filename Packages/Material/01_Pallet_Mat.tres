@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bvujedlhtfe3p"]
+
+[ext_resource type="Texture2D" uid="uid://d4kire2g085mo" path="res://Packages/Textures/Pallet/Pallet_BASE COLOR.png" id="1_8gf1q"]
+[ext_resource type="Texture2D" uid="uid://be0042opa4oob" path="res://Packages/Textures/Pallet/Pallet_METALLIC.png" id="2_13thm"]
+[ext_resource type="Texture2D" uid="uid://bvbpygooqpiii" path="res://Packages/Textures/Pallet/Pallet_NORMAL.png" id="3_8u1rc"]
+[ext_resource type="Texture2D" uid="uid://bmh4t3el2j22y" path="res://Packages/Textures/Pallet/Pallet_ROUGHNESS.png" id="4_nm2qs"]
+
+[resource]
+albedo_texture = ExtResource("1_8gf1q")
+metallic = 1.0
+metallic_texture = ExtResource("2_13thm")
+roughness_texture = ExtResource("4_nm2qs")
+normal_enabled = true
+normal_texture = ExtResource("3_8u1rc")

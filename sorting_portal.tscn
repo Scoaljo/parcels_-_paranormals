@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc87gb1jt5o7k"]
+
+[ext_resource type="Script" path="res://SortingPortalComponent.gd" id="1_xl6t2"]
+[ext_resource type="Shader" path="res://portal_effect.gdshader" id="2_yowuy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqo3i"]
+albedo_color = Color(2.16588e-07, 0.276233, 0.276233, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hj31p"]
+material = SubResource("StandardMaterial3D_oqo3i")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iad1o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bl6qm"]
+render_priority = 4
+shader = ExtResource("2_yowuy")
+shader_parameter/portal_color = Color(0, 0.5, 1, 0.3)
+shader_parameter/effect_intensity = 1.0
+shader_parameter/hover_intensity = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_avs6i"]
+radius = 1.5
+
+[node name="SortingPortal" type="Node3D"]
+script = ExtResource("1_xl6t2")
+
+[node name="PortalMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("CylinderMesh_hj31p")
+
+[node name="EffectsMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63612, 0)
+mesh = SubResource("PlaneMesh_iad1o")
+surface_material_override/0 = SubResource("ShaderMaterial_bl6qm")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_avs6i")
+
+[node name="FeedbackDisplay" type="Node3D" parent="."]

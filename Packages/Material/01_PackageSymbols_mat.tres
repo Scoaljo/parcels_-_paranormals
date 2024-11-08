@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cjahehisg7w3l"]
+
+[ext_resource type="Texture2D" uid="uid://c1q10jlrhses5" path="res://Packages/Textures/ShippingRunes/PackageSymbols.exr" id="1_h8e6x"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_h8e6x")

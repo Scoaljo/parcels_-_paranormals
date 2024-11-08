@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=4 uid="uid://7yoxsltygbql"]
+
+[ext_resource type="Material" uid="uid://bsjr4gol07s1q" path="res://Packages/Material/01_CardboarBox_Mat.tres" id="1_i75yb"]
+[ext_resource type="Script" path="res://COGITO/CogitoObjects/cogito_object.gd" id="1_j5ol6"]
+[ext_resource type="Material" uid="uid://cjahehisg7w3l" path="res://Packages/Material/01_PackageSymbols_mat.tres" id="2_lnt17"]
+[ext_resource type="PackedScene" uid="uid://cio4x05ipvslu" path="res://COGITO/Components/Interactions/CarryableComponent.tscn" id="4_g67nu"]
+[ext_resource type="Script" path="res://Packages/scenes/PackageProps/paranormal_box_component.gd" id="4_lyr5g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cn0bt"]
+points = PackedVector3Array(-0.4079, -0.3305, -0.331, 0.405559, 0.3305, 0.33, 0.405761, -0.0878263, 0.3301, 0.4079, -0.0754475, -0.331, -0.405638, 0.3305, 0.33, -0.405638, 0.3305, -0.329162, -0.405761, -0.328762, 0.3301, 0.4079, -0.3305, -0.331, 0.405559, 0.3305, -0.329162, 0.405761, -0.328762, 0.3301, 0.4094, -0.0757282, 0.230686)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_owle8"]
+resource_name = "Packages_CardboardBox_2"
+_surfaces = [{
+"aabb": AABB(-0.409408, -0.330526, -0.330967, 0.818826, 0.661053, 0.661053),
+"attribute_data": PackedByteArray("tdPSPpq7Kj/GbgM/hMBEP8ZuAz+EwEQ/r3MdPxf7ZD+vcx0/F/tkP5p4Nz8IgQo/xm4DPwiBCj/GbgM/CIEKP8ZuAz8AAH8/r3MdP4TARD+vcx0/hMBEP5p4Nz+auyo/tdPSPgiBCj/GbgM/F/tkP8ZuAz8X+2Q/xm4DP5q7Kj/GbgM/mrsqP8ZuAz+auyo/r3MdPwiBCj+vcx0/CIEKP69zHT8AAH8/r3MdP5q7Kj+vcx0/mrsqP69zHT+auyo/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AgAXAAoAAgARABcACwATAAUACwAWABMAEAASABUAEAAHABIABgAAAAwABgAPAAAADgAJAAQADgABAAkACAADABQACAANAAMA"),
+"material": ExtResource("1_i75yb"),
+"name": "CardBoardBoxMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("8J3RPsQ6qb6EdKm+8J3RPsQ6qb6EdKm+8J3RPsQ6qb6EdKm+8J3RvsQ6qT6EdKm+8J3RvsQ6qT6EdKm+8J3RvsQ6qT6EdKm+8J3RvsQ6qb4EAak+8J3RvsQ6qb4EAak+8J3RvsQ6qb4EAak+8J3RPsQ6qT6EdKm+8J3RPsQ6qT6EdKm+8J3RPsQ6qT6EdKm+8J3RvsQ6qb6EdKm+8J3RvsQ6qb6EdKm+8J3RvsQ6qb6EdKm+8J3RPsQ6qb4EAak+8J3RPsQ6qb4EAak+8J3RPsQ6qb4EAak+8J3RvsQ6qT4EAak+8J3RvsQ6qT4EAak+8J3RvsQ6qT4EAak+8J3RPsQ6qT4EAak+8J3RPsQ6qT4EAak+8J3RPsQ6qT4EAak+/38AAP9//7///////3///////3//f///AAD/f/9//////////3////9//////////38AAP9//7//f/9//3///wAA/3//f/////////9///////9//3////9//////////38AAP9//78AAP9//3//////////f////38AAP9//7//f/9//3///////3//f////3//f/9/////f////////wAA/3//f////3//f/9/////f////////////3//f///")
+}, {
+"aabb": AABB(-0.375918, -0.289049, 0.330403, 0.75987, 0.583529, 0.000564218),
+"attribute_data": PackedByteArray("AAAgPwAAAD8AAMA+AAAAPwAAID8AAEA///+/PgAAQD8AAEA/AAAAPwAAID8AAAA/AABAPwAAQD8AACA/AABAPwAAgD8AAIA/AACAPwAAQD8AAEA/AACAPwAAQD8AAEA/AAAAAAAAgD4AAAAAAAAAPv//vz4CAIA+AADAPgAAAD4AAAAAAAAAPwAAAAAAAIA+AACAPgAAAD8AAIA+AACAPg=="),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("AwAAAAIAAwABAAAABwAEAAYABwAFAAQACgAJAAgACgALAAkADAAPAA4ADAANAA8AEAATABIAEAARABMA"),
+"material": ExtResource("2_lnt17"),
+"name": "PackageSymbolsMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("IpWPvpiDQ76QKqk+VnjAvpmDQ76QKqk+IpWPvgClkr6QKqk+VnjAvgClkr6QKqk+XkduvpiDQ76QKqk+SZWPvpmDQ76QKqk+Xkduvv+kkr6QKqk+SZWPvgClkr6QKqk+RIEMvv4jkr6QKqk+RYEMvpaBQr6QKqk+qkduvv8jkr6QKqk+q0duvpeBQr6QKqk+gLhmvHqvJT6EdKk+gLhmvBnGlj6EdKk+T5XEPn6vJT6EdKk+T5XEPhvGlj6EdKk+CDsLvkD+k76wLak+CDsLvmjePr6wLak+vnMIvUD+k76wLak+vnMIvWfePr6wLak+/3//f/7//7//f/9//v//v/9//3////+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9/////v/9//3/+//+//3//f////7//f/9//v//vw==")
+}]
+blend_shape_mode = 0
+
+[node name="CardboardBox_2" type="RigidBody3D"]
+mass = 10.0
+script = ExtResource("1_j5ol6")
+
+[node name="CarryableComponent" parent="." instance=ExtResource("4_g67nu")]
+
+[node name="ParanormalBoxComponent" type="Node" parent="."]
+script = ExtResource("4_lyr5g")
+is_paranormal = true
+paranormal_weight = 50.0
+emits_aura = true
+aura_color = Color(0.501961, 0, 0.8, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_cn0bt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_owle8")
+skeleton = NodePath("")

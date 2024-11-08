@@ -1,0 +1,52 @@
+[gd_scene load_steps=13 format=3 uid="uid://djgdwvit4p51h"]
+
+[ext_resource type="Material" uid="uid://dr586yr33c5s1" path="res://Packages/Material/01_Shelf_mat.tres" id="1_t1rkc"]
+[ext_resource type="Material" uid="uid://cjahehisg7w3l" path="res://Packages/Material/01_PackageSymbols_mat.tres" id="2_0w5ne"]
+[ext_resource type="Material" uid="uid://bsjr4gol07s1q" path="res://Packages/Material/01_CardboarBox_Mat.tres" id="3_540iq"]
+[ext_resource type="Material" uid="uid://bvujedlhtfe3p" path="res://Packages/Material/01_Pallet_Mat.tres" id="4_nyrrl"]
+[ext_resource type="Material" uid="uid://g1lae54lw0rj" path="res://Packages/Material/01_Drum_mat.tres" id="5_ktngv"]
+[ext_resource type="Material" uid="uid://d3cnk4rijbj6" path="res://Packages/Material/01_Crate_mat.tres" id="6_4ftse"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3bys1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ffl2x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p2r8b"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ookw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hpebi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m06xe"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58138, -2.38419e-07, 0.990958)
+mesh = SubResource("BoxMesh_3bys1")
+skeleton = NodePath("../MeshInstance3D")
+surface_material_override/0 = ExtResource("1_t1rkc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76561, 0, -1.21972)
+mesh = SubResource("BoxMesh_ffl2x")
+surface_material_override/0 = ExtResource("2_0w5ne")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57254, 0, -0.132807)
+mesh = SubResource("BoxMesh_p2r8b")
+surface_material_override/0 = ExtResource("3_540iq")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.74984)
+mesh = SubResource("PlaneMesh_2ookw")
+surface_material_override/0 = ExtResource("4_nyrrl")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hpebi")
+surface_material_override/0 = ExtResource("5_ktngv")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.90408)
+mesh = SubResource("PlaneMesh_m06xe")
+surface_material_override/0 = ExtResource("6_4ftse")

@@ -1,0 +1,112 @@
+[gd_scene load_steps=28 format=3 uid="uid://bspkml5xgyt83"]
+
+[ext_resource type="PackedScene" uid="uid://d3fpj1rgicsno" path="res://Packages/scenes/PackageProps/pallet_2.tscn" id="1_2hqiq"]
+[ext_resource type="PackedScene" uid="uid://lcjo0e7m3i08" path="res://Packages/scenes/PackageProps/pallet_3.tscn" id="2_yibst"]
+[ext_resource type="PackedScene" uid="uid://bq6h8o8fgx5an" path="res://Packages/scenes/PackageProps/pallet_1.tscn" id="3_sqg78"]
+[ext_resource type="PackedScene" uid="uid://2nxk1ebqhds3" path="res://Packages/scenes/PackageProps/drum_1.tscn" id="4_e8pf1"]
+[ext_resource type="PackedScene" uid="uid://c0svoinyup6mk" path="res://Packages/scenes/PackageProps/drum_3.tscn" id="5_1mt6p"]
+[ext_resource type="PackedScene" uid="uid://b736dard2f42l" path="res://Packages/scenes/PackageProps/drum_2.tscn" id="6_31n50"]
+[ext_resource type="PackedScene" uid="uid://41sa5k61mm0f" path="res://Packages/scenes/PackageProps/cardboard_box_2.tscn" id="7_krlrs"]
+[ext_resource type="PackedScene" uid="uid://dhmcqtw0g5dnr" path="res://Packages/scenes/PackageProps/cardboard_box_8.tscn" id="8_exbik"]
+[ext_resource type="PackedScene" uid="uid://7surx20cxj6b" path="res://Packages/scenes/PackageProps/cardboard_box_1.tscn" id="9_5xj2l"]
+[ext_resource type="PackedScene" uid="uid://k8uxl4ya101" path="res://Packages/scenes/PackageProps/cardboard_box_3.tscn" id="10_a74lt"]
+[ext_resource type="PackedScene" uid="uid://bidvim1sst2ga" path="res://Packages/scenes/PackageProps/cardboard_box_4.tscn" id="11_br242"]
+[ext_resource type="PackedScene" uid="uid://ogl64d3ec1pm" path="res://Packages/scenes/PackageProps/cardboard_box_5.tscn" id="12_mccd3"]
+[ext_resource type="PackedScene" uid="uid://c2dpu5mvtprbi" path="res://Packages/scenes/PackageProps/cardboard_box_6.tscn" id="13_e5eoo"]
+[ext_resource type="PackedScene" uid="uid://brk7r5j6g36y2" path="res://Packages/scenes/PackageProps/cardboard_box_7.tscn" id="14_86n10"]
+[ext_resource type="PackedScene" uid="uid://dhd6blk2ypaql" path="res://Packages/scenes/PackageProps/crate_6.tscn" id="15_vlp7s"]
+[ext_resource type="PackedScene" uid="uid://02fvr50j1nhy" path="res://Packages/scenes/PackageProps/crate_5.tscn" id="16_1kwvd"]
+[ext_resource type="PackedScene" uid="uid://dpjp7iko8qqg6" path="res://Packages/scenes/PackageProps/crate_4.tscn" id="17_y3eyq"]
+[ext_resource type="PackedScene" uid="uid://b5qwkcac5hks4" path="res://Packages/scenes/PackageProps/crate_11.tscn" id="18_ny3hb"]
+[ext_resource type="PackedScene" uid="uid://cku83kd66c5fs" path="res://Packages/scenes/PackageProps/crate_3.tscn" id="19_7mf41"]
+[ext_resource type="PackedScene" uid="uid://dylvmxskd42uh" path="res://Packages/scenes/PackageProps/crate_2.tscn" id="20_iwxnq"]
+[ext_resource type="PackedScene" uid="uid://biab6wbncy0wp" path="res://Packages/scenes/PackageProps/crate_9.tscn" id="21_p0tmt"]
+[ext_resource type="PackedScene" uid="uid://1f76v6t1s524" path="res://Packages/scenes/PackageProps/crate_8.tscn" id="22_w4it5"]
+[ext_resource type="PackedScene" uid="uid://bpy1gnpjy0k5y" path="res://Packages/scenes/PackageProps/crate_10.tscn" id="23_cnewo"]
+[ext_resource type="PackedScene" uid="uid://cgffv6mxyphx3" path="res://Packages/scenes/PackageProps/crate_7.tscn" id="24_c58cv"]
+[ext_resource type="PackedScene" uid="uid://bhqv7wiib73rh" path="res://Packages/scenes/PackageProps/crate_1.tscn" id="25_kv3gu"]
+[ext_resource type="PackedScene" uid="uid://cu6ddy1md20w" path="res://Packages/scenes/PackageProps/shelf.tscn" id="26_hftpu"]
+[ext_resource type="PackedScene" uid="uid://dxh1cdllo0fum" path="res://Packages/scenes/PackageProps/shelf_long.tscn" id="27_3w04e"]
+
+[node name="Packages" type="Node3D"]
+
+[node name="Pallet_2" parent="." instance=ExtResource("1_2hqiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Pallet_3" parent="." instance=ExtResource("2_yibst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Pallet_1" parent="." instance=ExtResource("3_sqg78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Drum_1" parent="." instance=ExtResource("4_e8pf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Drum_3" parent="." instance=ExtResource("5_1mt6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Drum_2" parent="." instance=ExtResource("6_31n50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_2" parent="." instance=ExtResource("7_krlrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_8" parent="." instance=ExtResource("8_exbik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_1" parent="." instance=ExtResource("9_5xj2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_3" parent="." instance=ExtResource("10_a74lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_4" parent="." instance=ExtResource("11_br242")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_5" parent="." instance=ExtResource("12_mccd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_6" parent="." instance=ExtResource("13_e5eoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="CardboardBox_7" parent="." instance=ExtResource("14_86n10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_6" parent="." instance=ExtResource("15_vlp7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_5" parent="." instance=ExtResource("16_1kwvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_4" parent="." instance=ExtResource("17_y3eyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_11" parent="." instance=ExtResource("18_ny3hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_3" parent="." instance=ExtResource("19_7mf41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_2" parent="." instance=ExtResource("20_iwxnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_9" parent="." instance=ExtResource("21_p0tmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_8" parent="." instance=ExtResource("22_w4it5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_10" parent="." instance=ExtResource("23_cnewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_7" parent="." instance=ExtResource("24_c58cv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Crate_1" parent="." instance=ExtResource("25_kv3gu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Shelf" parent="." instance=ExtResource("26_hftpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)
+
+[node name="Shelf_Long" parent="." instance=ExtResource("27_3w04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2163, 0)

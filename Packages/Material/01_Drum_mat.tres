@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://g1lae54lw0rj"]
+
+[ext_resource type="Texture2D" uid="uid://dfnu70f6y10nx" path="res://Packages/Textures/Drum/Drum_Base Color.png" id="1_nksbq"]
+[ext_resource type="Texture2D" uid="uid://durb80argwfax" path="res://Packages/Textures/Drum/Drum_METALLIC.png" id="2_71wuc"]
+[ext_resource type="Texture2D" uid="uid://bwcsaxb5ouq63" path="res://Packages/Textures/Drum/Drum_NORMAL.png" id="3_eej5m"]
+[ext_resource type="Texture2D" uid="uid://c0l7g20jiesy8" path="res://Packages/Textures/Drum/Drum_ROUGHNESS.png" id="4_5b8dd"]
+
+[resource]
+albedo_texture = ExtResource("1_nksbq")
+metallic = 1.0
+metallic_texture = ExtResource("2_71wuc")
+roughness_texture = ExtResource("4_5b8dd")
+normal_enabled = true
+normal_texture = ExtResource("3_eej5m")

@@ -1,0 +1,214 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c0v2yn4bfltpp"
+valid=false
+
+[deps]
+
+source_file="res://Packages/GLTF/Packages.gltf"
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"CardBoardBoxMat": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Packages/Material/01_CardboarBox_Mat.tres"
+},
+"CrateMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Packages/Material/01_Crate_mat.tres"
+},
+"DrumMat": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Packages/Material/01_Drum_mat.tres"
+},
+"PackageSymbolsMat": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Packages/Material/01_PackageSymbols_mat.tres"
+},
+"PalletMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Packages/Material/01_Pallet_Mat.tres"
+},
+"ShelfMat": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Packages/Material/01_Shelf_mat.tres"
+}
+},
+"meshes": {
+"Packages_Drum_1001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": true,
+"save_to_file/path": "res://Assets/Packages/scenes/MeshData/.res"
+},
+"Packages_Pallet_1001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": true,
+"save_to_file/path": "res://Assets/Packages/scenes/MeshData/.res"
+},
+"Packages_Pallet_2001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": true,
+"save_to_file/path": "res://Assets/Packages/scenes/MeshData/.res"
+},
+"Packages_Pallet_3001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": true,
+"save_to_file/path": "res://Assets/Packages/scenes/MeshData/.res"
+}
+},
+"nodes": {
+"PATH:CardboardBox_1": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:CardboardBox_2": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:CardboardBox_3": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:CardboardBox_4": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:CardboardBox_5": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:CardboardBox_6": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:CardboardBox_7": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:CardboardBox_8": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_1": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_10": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_11": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_2": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_3": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_4": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_5": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_6": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_7": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_8": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Crate_9": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Drum_1": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Drum_2": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Drum_3": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Pallet_1": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Pallet_2": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Pallet_3": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Shelf": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Shelf_Long": {
+"generate/physics": true,
+"physics/body_type": 1
+}
+}
+}
+gltf/naming_version=0
+gltf/embedded_image_handling=1
