@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var spawn_interval: float = 5.0
+@export var spawn_interval: float = 3.0
 @export var random_position: bool = true
 @export var paranormal_chance: float = 0.5 # 50% chance for paranormal boxes
 

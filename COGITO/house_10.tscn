@@ -637,7 +637,6 @@ inventory_data = SubResource("Resource_blfsx")
 [node name="Box_Spawner" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92684, 4.76411, 0)
 script = ExtResource("14_q4mt6")
-spawn_interval = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Box_Spawner"]
 shape = SubResource("BoxShape3D_k6ayp")

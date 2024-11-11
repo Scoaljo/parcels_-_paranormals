@@ -12,6 +12,8 @@ class_name ParanormalBoxComponent
 			emits_aura = false
 			ectoplasm_sink = false
 			print("Reset to normal box properties")
+			if glow_mesh:
+				glow_mesh.queue_free()
 			
 @export var paranormal_weight: float = 1.0
 @export var emits_aura: bool = false
@@ -80,6 +82,24 @@ func create_glow_cube():
 	parent_object.add_child(glow_mesh)
 	glow_mesh.position = Vector3.ZERO
 	glow_mesh.rotation = Vector3.ZERO
+	
+	# Start with glow hidden
+	glow_mesh.visible = false
+
+func update_flashlight_interaction(flashlight: Node3D, is_visible: bool):
+	print("\nUpdating box interaction:")
+	print("- Is paranormal: ", is_paranormal)
+	print("- Emits aura: ", emits_aura)
+	print("- Has glow mesh: ", glow_mesh != null)
+	print("- Should be visible: ", is_visible)
+	
+	if !is_paranormal or !emits_aura or !glow_mesh:
+		print("-> Skipping update due to missing requirements")
+		return
+	
+	# Update glow visibility
+	glow_mesh.visible = is_visible
+	print("-> Set glow visibility to: ", is_visible)
 
 func apply_weight():
 	var rigid_body = parent_object as RigidBody3D

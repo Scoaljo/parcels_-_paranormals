@@ -46,6 +46,7 @@ script = ExtResource("1_kp3dx")
 
 [node name="ParanormalBoxComponent" type="Node" parent="."]
 script = ExtResource("3_ple67")
+is_paranormal = true
 paranormal_weight = 50.0
 emits_aura = true
 aura_color = Color(0.501961, 0, 0.8, 1)
