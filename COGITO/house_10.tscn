@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://c5vrub0d4jtbe"]
+[gd_scene load_steps=43 format=4 uid="uid://c5vrub0d4jtbe"]
 
 [ext_resource type="Script" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_8qcxb"]
 [ext_resource type="Material" uid="uid://cuyj4a7whw2jo" path="res://HouseAndPropsPack/Material/Wood_Deck.material" id="1_myu7j"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PackedScenes/cogito_player.tscn" id="7_yvepe"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="8_p2hau"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/cogito_inventory.gd" id="9_ohc5w"]
+[ext_resource type="PackedScene" uid="uid://bkfufibu6yqk6" path="res://box_spawner.tscn" id="11_sglne"]
 [ext_resource type="PackedScene" uid="uid://dw1uy1nii005w" path="res://magical_scale.tscn" id="13_v4hl7"]
-[ext_resource type="Script" path="res://COGITO/box_spawner.gd" id="14_q4mt6"]
 [ext_resource type="PackedScene" uid="uid://c7s0pnjk10x4b" path="res://EctoplasmPool.tscn" id="15_p7xri"]
 [ext_resource type="PackedScene" uid="uid://cgqkypvu7b80i" path="res://GoodArea.tscn" id="16_hkxl2"]
 [ext_resource type="PackedScene" uid="uid://cwd3g16ep0idw" path="res://COGITO/PackedScenes/Pickups/pickup_flashlight.tscn" id="16_psdta"]
@@ -557,8 +557,6 @@ starter_inventory = Array[ExtResource("8_p2hau")]([])
 inventory_size = Vector2i(5, 3)
 inventory_slots = Array[ExtResource("8_p2hau")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_k6ayp"]
-
 [sub_resource type="Environment" id="Environment_fok01"]
 glow_enabled = true
 glow_intensity = 1.0
@@ -635,12 +633,7 @@ skeleton = NodePath("")
 transform = Transform3D(-0.744253, 0, -0.667897, 0, 1, 0, 0.667897, 0, -0.744253, 0.964946, 3.6359, 0)
 inventory_data = SubResource("Resource_blfsx")
 
-[node name="Box_Spawner" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92684, 4.76411, 0)
-script = ExtResource("14_q4mt6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box_Spawner"]
-shape = SubResource("BoxShape3D_k6ayp")
+[node name="Box_Spawner" parent="." instance=ExtResource("11_sglne")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fok01")

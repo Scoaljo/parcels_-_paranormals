@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6v5rsjtk3kjr"]
+[gd_scene load_steps=10 format=3 uid="uid://b6v5rsjtk3kjr"]
 
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PackedScenes/cogito_player.tscn" id="1_vvhak"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="2_d88b2"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/cogito_inventory.gd" id="3_ghji4"]
 [ext_resource type="Script" path="res://void_manager.gd" id="4_pyi2r"]
+[ext_resource type="PackedScene" uid="uid://cwral5ah8msdk" path="res://delivery_tube_system_1.tscn" id="5_3q5fd"]
 
 [sub_resource type="Environment" id="Environment_tgly4"]
 background_mode = 1
@@ -36,35 +37,6 @@ grid = true
 starter_inventory = Array[ExtResource("2_d88b2")]([])
 inventory_size = Vector2i(5, 3)
 inventory_slots = Array[ExtResource("2_d88b2")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u23vp"]
-cull_mode = 2
-albedo_color = Color(0.756329, 0.748113, 0.72028, 1)
-metallic = 0.7
-roughness = 0.5
-emission_enabled = true
-emission = Color(0.164706, 0.164706, 0.309804, 1)
-emission_energy_multiplier = 0.3
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_eevqu"]
-material = SubResource("StandardMaterial3D_u23vp")
-top_radius = 4.0
-bottom_radius = 5.0
-height = 60.0
-cap_bottom = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0kg7"]
-albedo_color = Color(0.756863, 0.74902, 0.721569, 1)
-metallic = 0.7
-roughness = 0.4
-emission_enabled = true
-emission = Color(0.0216311, 0.000956084, 0.0866975, 1)
-emission_energy_multiplier = 0.3
-
-[sub_resource type="TorusMesh" id="TorusMesh_b655b"]
-material = SubResource("StandardMaterial3D_a0kg7")
-inner_radius = 5.0
-outer_radius = 6.0
 
 [node name="SortingFacility" type="Node3D"]
 
@@ -130,13 +102,4 @@ light_color = Color(0.8, 0.8, 0.8, 1)
 light_energy = 10.0
 omni_range = 30.0
 
-[node name="DeliveryTubeSystem1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="DeliveryTubeSystem1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
-mesh = SubResource("CylinderMesh_eevqu")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="DeliveryTubeSystem1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-mesh = SubResource("TorusMesh_b655b")
+[node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]

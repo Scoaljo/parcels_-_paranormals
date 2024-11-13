@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkfufibu6yqk6"]
+
+[ext_resource type="Script" path="res://COGITO/box_spawner.gd" id="1_e5tog"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6ayp"]
+
+[node name="Box_Spawner" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92684, 4.76411, 0)
+script = ExtResource("1_e5tog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k6ayp")

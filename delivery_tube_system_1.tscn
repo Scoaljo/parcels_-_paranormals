@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwral5ah8msdk"]
+
+[ext_resource type="PackedScene" uid="uid://bkfufibu6yqk6" path="res://box_spawner.tscn" id="1_2mtuq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ndg1"]
+size = Vector3(0.2, 60, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u23vp"]
+cull_mode = 2
+albedo_color = Color(0.756329, 0.748113, 0.72028, 1)
+metallic = 0.7
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.164706, 0.164706, 0.309804, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eevqu"]
+material = SubResource("StandardMaterial3D_u23vp")
+top_radius = 5.0
+bottom_radius = 5.0
+height = 60.0
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0kg7"]
+albedo_color = Color(0.756863, 0.74902, 0.721569, 1)
+metallic = 0.7
+roughness = 0.4
+emission_enabled = true
+emission = Color(0.0216311, 0.000956084, 0.0866975, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="TorusMesh" id="TorusMesh_b655b"]
+material = SubResource("StandardMaterial3D_a0kg7")
+inner_radius = 5.0
+outer_radius = 6.0
+
+[node name="DeliveryTubeSystem1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="TubeCollision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 0)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -3.4, 0, 3.4)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 4.8)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 3.4, 0, 3.4)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8, 0, 0)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -3.4, 0, -3.4)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, -4.8)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="TubeCollision"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.4, 0, -3.4)
+shape = SubResource("BoxShape3D_1ndg1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+mesh = SubResource("CylinderMesh_eevqu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+mesh = SubResource("TorusMesh_b655b")
+
+[node name="Box_Spawner" parent="." instance=ExtResource("1_2mtuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 75.16, 0.5)

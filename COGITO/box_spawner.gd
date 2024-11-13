@@ -3,6 +3,8 @@ extends Area3D
 @export var spawn_interval: float = 3.0
 @export var random_position: bool = true
 @export var paranormal_chance: float = 0.5 # 50% chance for paranormal boxes
+@export var eject_force: float = 2.0  # Force to push boxes out
+@export var random_torque: float = 1.0  # Amount of random rotation
 
 @onready var collision_shape = $CollisionShape3D
 @onready var spawn_timer = $Timer
@@ -42,15 +44,32 @@ func spawn_cardboard_box():
 	# Add to scene after configuration
 	get_parent().add_child(box)
 	
+	# Position the box
 	if random_position:
 		var shape_extents = collision_shape.shape.size / 2
 		var random_x = randf_range(-shape_extents.x, shape_extents.x)
-		var random_y = randf_range(-shape_extents.y, shape_extents.y)
 		var random_z = randf_range(-shape_extents.z, shape_extents.z)
-		box.global_position = global_position + Vector3(random_x, random_y, random_z)
-		print("Spawned at position: ", box.global_position)
+		# Keep Y at spawn point for better control
+		box.global_position = global_position + Vector3(random_x, 0, random_z)
 	else:
 		box.global_position = global_position
-		print("Spawned at center: ", box.global_position)
+
+	# Get the RigidBody3D component
+	var rigid_body = box as RigidBody3D
+	if rigid_body:
+		# Add initial downward velocity with slight random horizontal movement
+		var velocity = Vector3(
+			randf_range(-1, 1),  # Small random X movement
+			-eject_force,        # Downward force
+			randf_range(-1, 1)   # Small random Z movement
+		)
+		rigid_body.linear_velocity = velocity
+
+		# Add random rotation
+		rigid_body.angular_velocity = Vector3(
+			randf_range(-random_torque, random_torque),
+			randf_range(-random_torque, random_torque),
+			randf_range(-random_torque, random_torque)
+		)
 	
-	print("=== Spawn Complete ===\n")
+	print("Spawned box with initial velocity: ", rigid_body.linear_velocity if rigid_body else "No RigidBody")
