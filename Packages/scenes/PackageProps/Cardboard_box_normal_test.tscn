@@ -43,6 +43,7 @@ mass = 10.0
 script = ExtResource("1_kp3dx")
 
 [node name="CarryableComponent" parent="." instance=ExtResource("2_cp4g2")]
+lock_rotation_when_carried = false
 
 [node name="ParanormalBoxComponent" type="Node" parent="."]
 script = ExtResource("3_ple67")

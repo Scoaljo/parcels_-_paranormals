@@ -641,7 +641,7 @@ environment = SubResource("Environment_fok01")
 [node name="MagicalScale" parent="." instance=ExtResource("13_v4hl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.516377, 2, 4.76338)
 
-[node name="DisposalArea" parent="." instance=ExtResource("16_ri0uv")]
+[node name="GoodArea" parent="." instance=ExtResource("16_ri0uv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11001, 2, -2.10342)
 
 [node name="DisposalArea2" parent="." instance=ExtResource("16_hkxl2")]

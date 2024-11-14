@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6v5rsjtk3kjr"]
+[gd_scene load_steps=11 format=3 uid="uid://b6v5rsjtk3kjr"]
 
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PackedScenes/cogito_player.tscn" id="1_vvhak"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="2_d88b2"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/cogito_inventory.gd" id="3_ghji4"]
 [ext_resource type="Script" path="res://void_manager.gd" id="4_pyi2r"]
 [ext_resource type="PackedScene" uid="uid://cwral5ah8msdk" path="res://delivery_tube_system_1.tscn" id="5_3q5fd"]
+[ext_resource type="PackedScene" uid="uid://cwd3g16ep0idw" path="res://COGITO/PackedScenes/Pickups/pickup_flashlight.tscn" id="6_5qkxp"]
 
 [sub_resource type="Environment" id="Environment_tgly4"]
 background_mode = 1
@@ -103,3 +104,6 @@ light_energy = 10.0
 omni_range = 30.0
 
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
+
+[node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29218, 9.21873, -10.1752)
