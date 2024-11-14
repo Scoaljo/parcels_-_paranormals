@@ -12,30 +12,17 @@ class_name ParanormalBoxComponent
 			emits_aura = false
 			ectoplasm_sink = false
 			print("Reset to normal box properties")
-			if glow_mesh:
-				glow_mesh.queue_free()
 			
 @export var paranormal_weight: float = 1.0
 @export var emits_aura: bool = false
-@export var aura_color: Color = Color(0.5, 0.0, 1.0, 0.2)
-@export var aura_intensity: float = 1.5
 @export var ectoplasm_sink: bool = false
 
 var parent_object: Node3D
-var mesh_instance: MeshInstance3D
-var glow_mesh: MeshInstance3D
 
 func _ready():
 	parent_object = get_parent()
-	mesh_instance = parent_object.find_child("MeshInstance3d", true) as MeshInstance3D
-	if !mesh_instance:
-		mesh_instance = parent_object.find_child("MeshInstance3D", true) as MeshInstance3D
-	
 	validate_paranormal_state()
 	print_box_properties()
-	
-	if is_paranormal and emits_aura:
-		call_deferred("create_glow_cube")
 	
 	if is_paranormal:
 		apply_weight()
@@ -56,50 +43,6 @@ func print_box_properties():
 	else:
 		print("* Normal box, no special properties")
 	print("=====================")
-
-func create_glow_cube():
-	var cube_mesh = BoxMesh.new()
-	cube_mesh.size = Vector3(1.15, 1.15, 1.15)
-	
-	glow_mesh = MeshInstance3D.new()
-	add_child(glow_mesh)
-	
-	var mat = StandardMaterial3D.new()
-	mat.flags_unshaded = true
-	mat.flags_transparent = true
-	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	mat.albedo_color = Color(aura_color.r, aura_color.g, aura_color.b, 0.1)
-	mat.emission_enabled = true
-	mat.emission = aura_color
-	mat.emission_energy_multiplier = aura_intensity
-	mat.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-	
-	glow_mesh.mesh = cube_mesh
-	glow_mesh.material_override = mat
-	glow_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	
-	remove_child(glow_mesh)
-	parent_object.add_child(glow_mesh)
-	glow_mesh.position = Vector3.ZERO
-	glow_mesh.rotation = Vector3.ZERO
-	
-	# Start with glow hidden
-	glow_mesh.visible = false
-
-func update_flashlight_interaction(flashlight: Node3D, is_visible: bool):
-	print("\nUpdating box interaction:")
-	print("- Is paranormal: ", is_paranormal)
-	print("- Emits aura: ", emits_aura)
-	print("- Has glow mesh: ", glow_mesh != null)
-	print("- Should be visible: ", is_visible)
-	
-	if !is_paranormal or !emits_aura or !glow_mesh:
-		print("-> Skipping update due to missing requirements")
-		return
-	
-	# Update glow visibility
-	glow_mesh.visible = is_visible
-	print("-> Set glow visibility to: ", is_visible)
 
 func apply_weight():
 	var rigid_body = parent_object as RigidBody3D
@@ -139,8 +82,6 @@ func reset_to_normal() -> void:
 	paranormal_weight = 1.0
 	emits_aura = false
 	ectoplasm_sink = false
-	if glow_mesh:
-		glow_mesh.queue_free()
 
 func randomize_properties() -> void:
 	print("\nRandomizing properties...")
@@ -171,6 +112,5 @@ func get_package_properties() -> Dictionary:
 		"is_paranormal": is_paranormal,
 		"weight": paranormal_weight,
 		"aura": emits_aura,
-		"aura_strength": aura_intensity if emits_aura else 0.0,
 		"ectoplasm_sink": ectoplasm_sink
 	}

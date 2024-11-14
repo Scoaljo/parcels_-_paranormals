@@ -11,8 +11,13 @@
 background_mode = 1
 background_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.0205087, 0.0205034, 0.115722, 1)
-ambient_light_energy = 0.2
+ambient_light_color = Color(0.128509, 0.128784, 0.379606, 1)
+ambient_light_energy = 0.8
+glow_enabled = true
+glow_levels/3 = 0.5
+glow_levels/4 = 0.6
+glow_levels/5 = 0.7
+glow_blend_mode = 0
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
@@ -61,7 +66,7 @@ transform = Transform3D(-0.744253, 0, -0.667897, 0, 1, 0, 0.667897, 0, -0.744253
 inventory_data = SubResource("Resource_up6xa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, 0.301201)
 light_color = Color(0.705882, 0.705882, 0.8, 1)
 light_energy = 0.8
 shadow_enabled = true
