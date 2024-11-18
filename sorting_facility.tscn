@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6v5rsjtk3kjr"]
+[gd_scene load_steps=12 format=3 uid="uid://b6v5rsjtk3kjr"]
 
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PackedScenes/cogito_player.tscn" id="1_vvhak"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="2_d88b2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://void_manager.gd" id="4_pyi2r"]
 [ext_resource type="PackedScene" uid="uid://cwral5ah8msdk" path="res://delivery_tube_system_1.tscn" id="5_3q5fd"]
 [ext_resource type="PackedScene" uid="uid://cwd3g16ep0idw" path="res://COGITO/PackedScenes/Pickups/pickup_flashlight.tscn" id="6_5qkxp"]
+[ext_resource type="PackedScene" uid="uid://dw1uy1nii005w" path="res://magical_scale.tscn" id="7_m8lkw"]
 
 [sub_resource type="Environment" id="Environment_tgly4"]
 background_mode = 1
@@ -36,7 +37,7 @@ roughness = 0.4
 [sub_resource type="BoxShape3D" id="BoxShape3D_myms6"]
 size = Vector3(1000, 1, 1000)
 
-[sub_resource type="Resource" id="Resource_up6xa"]
+[sub_resource type="Resource" id="Resource_lod2t"]
 resource_local_to_scene = true
 script = ExtResource("3_ghji4")
 grid = true
@@ -63,7 +64,7 @@ script = ExtResource("4_pyi2r")
 
 [node name="CogitoPlayer" parent="." instance=ExtResource("1_vvhak")]
 transform = Transform3D(-0.744253, 0, -0.667897, 0, 1, 0, 0.667897, 0, -0.744253, 4.21304, 2.2001, 0)
-inventory_data = SubResource("Resource_up6xa")
+inventory_data = SubResource("Resource_lod2t")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, 0.301201)
@@ -111,4 +112,7 @@ omni_range = 30.0
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
 
 [node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29218, 9.21873, -10.1752)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29218, 9.21873, 22.2343)
+
+[node name="MagicalScale" parent="." instance=ExtResource("7_m8lkw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85859, 0.5, -2.71341)
