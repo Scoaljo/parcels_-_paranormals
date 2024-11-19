@@ -3,26 +3,29 @@
 [ext_resource type="Script" path="res://EctoplasmPoolComponent.gd" id="1_q2h7l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1mhgp"]
-size = Vector3(2, 1, 2)
+size = Vector3(3, 3, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvqs7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs1c0"]
 transparency = 1
-albedo_color = Color(0.188235, 0.513726, 0.407843, 0.0901961)
-metallic = 0.9
+albedo_color = Color(0.1, 0.2, 0.4, 0.2)
+metallic = 0.8
 roughness = 0.1
 emission_enabled = true
-emission = Color(1.92523e-06, 0.669886, 0, 1)
-emission_energy_multiplier = 0.5
+emission = Color(0.2, 0.4, 1, 1)
+emission_energy_multiplier = 3.0
+refraction_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_bnhfd"]
-material = SubResource("StandardMaterial3D_pvqs7")
-size = Vector3(2, 1, 2)
+material = SubResource("StandardMaterial3D_fs1c0")
+size = Vector3(3, 3, 3)
 
 [node name="EctoplasmPool" type="Area3D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_q2h7l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_1mhgp")
 
-[node name="WaterMesh" type="MeshInstance3D" parent="."]
+[node name="FieldMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_bnhfd")

@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bkfufibu6yqk6" path="res://box_spawner.tscn" id="11_sglne"]
 [ext_resource type="PackedScene" uid="uid://dw1uy1nii005w" path="res://magical_scale.tscn" id="13_v4hl7"]
 [ext_resource type="PackedScene" uid="uid://c7s0pnjk10x4b" path="res://EctoplasmPool.tscn" id="15_p7xri"]
-[ext_resource type="PackedScene" uid="uid://cgqkypvu7b80i" path="res://GoodArea.tscn" id="16_hkxl2"]
+[ext_resource type="PackedScene" uid="uid://cgqkypvu7b80i" path="res://MortalArea.tscn" id="16_hkxl2"]
 [ext_resource type="PackedScene" uid="uid://cwd3g16ep0idw" path="res://COGITO/PackedScenes/Pickups/pickup_flashlight.tscn" id="16_psdta"]
-[ext_resource type="PackedScene" uid="uid://biduqd8mhskm3" path="res://DisposalArea.tscn" id="16_ri0uv"]
+[ext_resource type="PackedScene" uid="uid://biduqd8mhskm3" path="res://ParanormalArea.tscn" id="16_ri0uv"]
 [ext_resource type="PackedScene" uid="uid://voqw8iiixm6c" path="res://Packages/scenes/PackageProps/Cardboard_box_normal_test.tscn" id="17_qk1s1"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u2nij"]

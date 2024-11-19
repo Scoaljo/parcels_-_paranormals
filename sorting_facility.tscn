@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6v5rsjtk3kjr"]
+[gd_scene load_steps=15 format=3 uid="uid://b6v5rsjtk3kjr"]
 
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PackedScenes/cogito_player.tscn" id="1_vvhak"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="2_d88b2"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cwral5ah8msdk" path="res://delivery_tube_system_1.tscn" id="5_3q5fd"]
 [ext_resource type="PackedScene" uid="uid://cwd3g16ep0idw" path="res://COGITO/PackedScenes/Pickups/pickup_flashlight.tscn" id="6_5qkxp"]
 [ext_resource type="PackedScene" uid="uid://dw1uy1nii005w" path="res://magical_scale.tscn" id="7_m8lkw"]
+[ext_resource type="PackedScene" uid="uid://c7s0pnjk10x4b" path="res://EctoplasmPool.tscn" id="8_lutmf"]
+[ext_resource type="PackedScene" uid="uid://dvvunfqidipri" path="res://MortalPortalArea.tscn" id="9_u0vhu"]
+[ext_resource type="PackedScene" uid="uid://dm4nle3gv82ye" path="res://ParanormalPortalArea.tscn" id="10_fmgri"]
 
 [sub_resource type="Environment" id="Environment_tgly4"]
 background_mode = 1
@@ -112,7 +115,16 @@ omni_range = 30.0
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
 
 [node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29218, 9.21873, 22.2343)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29218, 6.84792, -1.30761)
 
 [node name="MagicalScale" parent="." instance=ExtResource("7_m8lkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85859, 0.5, -2.71341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.382, 0.5, 0.487538)
+
+[node name="EctoplasmPool" parent="." instance=ExtResource("8_lutmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4899, 2, 0.940789)
+
+[node name="MortalPortalArea" parent="." instance=ExtResource("9_u0vhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.537173, 2.25, 7.806)
+
+[node name="ParanormalPortalArea" parent="." instance=ExtResource("10_fmgri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0084362, 2.06492, -7.07935)
