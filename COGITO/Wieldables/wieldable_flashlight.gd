@@ -2,14 +2,25 @@ extends CogitoWieldable
 
 @export_group("Detector Settings")
 @export var detection_range: float = 20.0
-@export var base_rotation_speed := 0.2  # Slightly faster base rotation
-@export var max_rotation_speed := 5.0   # Much faster max speed
-@export var pulse_frequency := 3.0      
+@export var base_rotation_speed := 0.2
+@export var max_rotation_speed := 5.0
+@export var pulse_frequency := 3.0
+@export var lift_force: float = 25.0
+@export var carry_distance: float = 2.0  # Closer carry distance
+@export var lift_height: float = 0.0  # Centered height (no lift)
+
+@export_group("Blast Settings")
+@export var blast_force: float = 30.0
+@export var blast_upward_bias: float = 0.1
+@export var blast_spin_force: float = 8.0
 
 # State tracking
 var is_active := true
 var detection_area: Area3D
 var detected_boxes: Array[Node] = []
+var currently_lifted_object: RigidBody3D = null
+var desired_lift_position: Vector3
+var is_toggled: bool = false
 
 # Animation state
 var current_intensity := 0.0
@@ -20,7 +31,6 @@ var ring_rotations := {
 	"inner": Vector3.ZERO
 }
 
-# Get mesh nodes
 @onready var detector_mesh = $Detector_Mesh
 @onready var core_orb = $Detector_Mesh/CoreOrb
 @onready var inner_ring = $Detector_Mesh/InnerRing
@@ -32,7 +42,122 @@ func _ready():
 		wieldable_mesh.hide()
 	setup_detection_area()
 	setup_materials()
-	print("Detector initialized")
+
+func _physics_process(_delta):
+	if currently_lifted_object and is_instance_valid(currently_lifted_object):
+		var camera = get_viewport().get_camera_3d()
+		if camera:
+			# Keep object directly in front of camera with stronger position control
+			var forward = -camera.global_transform.basis.z
+			desired_lift_position = camera.global_position + (forward * carry_distance)
+			
+			var current_pos = currently_lifted_object.global_position
+			var target_pos = desired_lift_position
+			
+			# More direct position control
+			var direction = target_pos - current_pos
+			var distance = direction.length()
+			
+			# Reduced strength for smoother pulling
+			var strength = 15.0  # Reduced from 50.0 to make pulling less aggressive
+			currently_lifted_object.linear_velocity = direction * strength
+			currently_lifted_object.angular_velocity = Vector3.ZERO
+
+func action_secondary(is_released: bool) -> Variant:
+	if !is_released and currently_lifted_object and is_instance_valid(currently_lifted_object):
+		blast_object()
+	return null  # Add this return statement
+
+func blast_object():
+	if currently_lifted_object and is_instance_valid(currently_lifted_object):
+		var camera = get_viewport().get_camera_3d()
+		if camera:
+			var blast_direction = -camera.global_transform.basis.z + (Vector3.UP * blast_upward_bias)
+			blast_direction = blast_direction.normalized()
+			
+			# Reset physics properties
+			var carryable = currently_lifted_object.get_node_or_null("CarryableComponent")
+			if carryable:
+				carryable.is_disabled = false
+			
+			currently_lifted_object.gravity_scale = 1.0
+			currently_lifted_object.linear_damp = 0
+			currently_lifted_object.angular_damp = 0
+			currently_lifted_object.lock_rotation = false
+			
+			# Set velocity directly instead of using impulse to ignore mass
+			currently_lifted_object.linear_velocity = blast_direction * blast_force
+			
+			currently_lifted_object = null
+			is_toggled = false
+
+func action_primary(_passed_item_reference: InventoryItemPD, is_released: bool):
+	if is_released:  # Only handle the release of the button
+		if is_toggled:
+			release_object()
+			is_toggled = false
+		else:
+			var success = try_grab_object()
+			is_toggled = success
+
+func try_grab_object() -> bool:
+	var camera = get_viewport().get_camera_3d()
+	if !camera:
+		return false
+		
+	var space_state = get_world_3d().direct_space_state
+	var start = camera.global_position
+	var end = start + -camera.global_transform.basis.z * detection_range
+	
+	var query = PhysicsRayQueryParameters3D.create(start, end)
+	query.exclude = [self]
+	query.collision_mask = 1  # Adjust based on your collision layers
+	
+	var result = space_state.intersect_ray(query)
+	# Check specifically for CarryableComponent
+	if result and result.collider is RigidBody3D:
+		var carryable = result.collider.get_node_or_null("CarryableComponent")
+		if carryable and !carryable.is_disabled:
+			lift_object(result.collider)
+			return true
+	return false
+
+func lift_object(object: RigidBody3D):
+	if currently_lifted_object:
+		release_object()
+		
+	currently_lifted_object = object
+	
+	# We know the object has a CarryableComponent because of our check
+	var carryable = object.get_node("CarryableComponent")
+	carryable.is_disabled = true
+	
+	# Modify physics for better control
+	currently_lifted_object.gravity_scale = 0
+	currently_lifted_object.linear_damp = 5
+	currently_lifted_object.angular_damp = 10
+	currently_lifted_object.freeze = false
+	
+	# Lock rotation for stability
+	currently_lifted_object.lock_rotation = true
+
+func release_object():
+	if currently_lifted_object and is_instance_valid(currently_lifted_object):
+		# Re-enable CarryableComponent
+		var carryable = currently_lifted_object.get_node_or_null("CarryableComponent")
+		if carryable:
+			carryable.is_disabled = false
+		
+		# Reset physics properties
+		currently_lifted_object.gravity_scale = 1.0
+		currently_lifted_object.linear_damp = 0
+		currently_lifted_object.angular_damp = 0
+		currently_lifted_object.lock_rotation = false
+		
+		# Apply slight downward velocity for better drop feel
+		currently_lifted_object.linear_velocity = Vector3(0, -1, 0)
+		
+		currently_lifted_object = null
 
 func setup_detection_area():
 	detection_area = Area3D.new()
@@ -155,8 +280,8 @@ func unequip():
 	animation_player.play(anim_unequip)
 	is_active = false
 
-func action_primary(_passed_item_reference:InventoryItemPD, _is_released: bool):
-	pass
+#func action_primary(_passed_item_reference:InventoryItemPD, _is_released: bool):
+#	pass
 
 func reload():
 	animation_player.play(anim_reload)

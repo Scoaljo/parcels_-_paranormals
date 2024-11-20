@@ -43,13 +43,13 @@ mass = 10.0
 script = ExtResource("1_j5ol6")
 
 [node name="CarryableComponent" parent="." instance=ExtResource("4_g67nu")]
+lock_rotation_when_carried = false
 
 [node name="ParanormalBoxComponent" type="Node" parent="."]
 script = ExtResource("4_lyr5g")
 is_paranormal = true
 paranormal_weight = 50.0
 emits_aura = true
-aura_color = Color(0.501961, 0, 0.8, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_cn0bt")

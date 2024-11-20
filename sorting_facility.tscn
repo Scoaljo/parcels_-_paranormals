@@ -115,16 +115,16 @@ omni_range = 30.0
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
 
 [node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29218, 6.84792, -1.30761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1852, 2.48925, 3.486)
 
 [node name="MagicalScale" parent="." instance=ExtResource("7_m8lkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.382, 0.5, 0.487538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0339, 0.5, 0.487538)
 
 [node name="EctoplasmPool" parent="." instance=ExtResource("8_lutmf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4899, 2, 0.940789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5197, 2, 0.940789)
 
 [node name="MortalPortalArea" parent="." instance=ExtResource("9_u0vhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.537173, 2.25, 7.806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.537173, 2.25, 12.5749)
 
 [node name="ParanormalPortalArea" parent="." instance=ExtResource("10_fmgri")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0084362, 2.06492, -7.07935)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0084362, 2.06492, -16.6029)
