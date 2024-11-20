@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://7yoxsltygbql"]
+[gd_scene load_steps=11 format=4 uid="uid://7yoxsltygbql"]
 
 [ext_resource type="Material" uid="uid://bsjr4gol07s1q" path="res://Packages/Material/01_CardboarBox_Mat.tres" id="1_i75yb"]
 [ext_resource type="Script" path="res://COGITO/CogitoObjects/cogito_object.gd" id="1_j5ol6"]
 [ext_resource type="Material" uid="uid://cjahehisg7w3l" path="res://Packages/Material/01_PackageSymbols_mat.tres" id="2_lnt17"]
+[ext_resource type="AudioStream" uid="uid://meqsjmejufat" path="res://ImpactSounds/Impact_Simple_01/SFX-impact-simple-01_wav.wav" id="3_jwiud"]
+[ext_resource type="AudioStream" uid="uid://f52a17tfvqyj" path="res://ImpactSounds/Impact_Simple_01/SFX-impact-simple-02_wav.wav" id="4_edju5"]
 [ext_resource type="PackedScene" uid="uid://cio4x05ipvslu" path="res://COGITO/Components/Interactions/CarryableComponent.tscn" id="4_g67nu"]
 [ext_resource type="Script" path="res://Packages/scenes/PackageProps/paranormal_box_component.gd" id="4_lyr5g"]
+[ext_resource type="AudioStream" uid="uid://c2fusww3h60h5" path="res://ImpactSounds/Impact_Simple_01/SFX-impact-simple-03_wav.wav" id="5_cqw64"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cn0bt"]
 points = PackedVector3Array(-0.4079, -0.3305, -0.331, 0.405559, 0.3305, 0.33, 0.405761, -0.0878263, 0.3301, 0.4079, -0.0754475, -0.331, -0.405638, 0.3305, 0.33, -0.405638, 0.3305, -0.329162, -0.405761, -0.328762, 0.3301, 0.4079, -0.3305, -0.331, 0.405559, 0.3305, -0.329162, 0.405761, -0.328762, 0.3301, 0.4094, -0.0757282, 0.230686)
@@ -44,6 +47,11 @@ script = ExtResource("1_j5ol6")
 
 [node name="CarryableComponent" parent="." instance=ExtResource("4_g67nu")]
 lock_rotation_when_carried = false
+impact_sounds = Array[AudioStream]([ExtResource("3_jwiud"), ExtResource("4_edju5"), ExtResource("5_cqw64")])
+min_velocity_for_sound = 0.1
+base_impact_volume_db = -5.0
+velocity_scale_factor = 0.8
+max_distance = 25.0
 
 [node name="ParanormalBoxComponent" type="Node" parent="."]
 script = ExtResource("4_lyr5g")

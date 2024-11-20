@@ -21,19 +21,65 @@ signal thrown(impulse)
 @onready var audio_stream_player_3d = $AudioStreamPlayer3D
 @onready var camera : Camera3D = get_viewport().get_camera_3d()
 
+@export_group("Impact Sounds")
+@export var impact_sounds: Array[AudioStream]
+@export var min_velocity_for_sound: float = 2.0
+@export var sound_cooldown: float = 0.1
+@export var base_impact_volume_db: float = -20.0  # Base volume level
+@export var velocity_scale_factor: float = 0.5    # How much velocity affects volume
+@export var max_distance: float = 20.0            # Maximum distance to hear sound
+@export var attenuation_factor: float = 2.0       # How quickly sound fades with distance
+
+var last_impact_time: float = 0.0
+var is_initialized: bool = false
+
 var parent_object
 var is_being_carried : bool
 var player_interaction_component : PlayerInteractionComponent
 var carry_position : Vector3 #Position the carriable "floats towards".
 
-
 func _ready():
 	parent_object = get_parent()
 	if parent_object.has_signal("body_entered"):
-		parent_object.body_entered.connect(_on_body_entered) #Connecting to body entered signal
-	else:
-		print(parent_object.name, ": CarriableComponent needs to be child to a RigidBody3D to work.")
+		parent_object.body_entered.connect(_on_body_entered)
+	
+	if parent_object is RigidBody3D:
+		parent_object.contact_monitor = true
+		parent_object.max_contacts_reported = 3
+		parent_object.body_entered.connect(_on_collision)
+		is_initialized = true
+		
+		# Setup audio player properties
+		if audio_stream_player_3d:
+			audio_stream_player_3d.max_distance = max_distance
+			audio_stream_player_3d.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_DISTANCE
+			audio_stream_player_3d.unit_size = 1.0
+			audio_stream_player_3d.volume_db = -20
+		else:
+			print(parent_object.name, ": CarriableComponent needs to be child to a RigidBody3D to work.")
 
+func _on_collision(_body: Node):
+	if !is_initialized or !parent_object:
+		return
+		
+	var current_time = Time.get_ticks_msec() / 1000.0
+	if current_time - last_impact_time < sound_cooldown:
+		return
+	
+	var rigid_body = parent_object as RigidBody3D
+	if rigid_body:
+		var velocity = rigid_body.linear_velocity.length()
+		
+		if velocity > min_velocity_for_sound and impact_sounds.size() > 0:
+			# Calculate volume based on velocity
+			var velocity_volume = clamp(velocity * velocity_scale_factor, 0, 15)  # Up to 15dB boost for fast impacts
+			
+			# Setup the sound
+			audio_stream_player_3d.stream = impact_sounds[randi() % impact_sounds.size()]
+			audio_stream_player_3d.pitch_scale = randf_range(0.9, 1.1)
+			audio_stream_player_3d.volume_db = clamp(-20 + (velocity * velocity_scale_factor), -40, 0)
+			audio_stream_player_3d.play()
+			last_impact_time = current_time
 
 func interact(_player_interaction_component:PlayerInteractionComponent):
 	if !is_disabled:
