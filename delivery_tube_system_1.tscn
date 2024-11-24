@@ -82,4 +82,4 @@ mesh = SubResource("TorusMesh_b655b")
 
 [node name="Box_Spawner" parent="." instance=ExtResource("1_2mtuq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 75.16, 0.5)
-spawn_interval = 1.0
+spawn_interval = 10.0

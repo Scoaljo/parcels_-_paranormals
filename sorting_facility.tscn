@@ -14,7 +14,7 @@
 [sub_resource type="Environment" id="Environment_tgly4"]
 background_mode = 1
 background_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
-ambient_light_source = 2
+ambient_light_source = 1
 ambient_light_color = Color(0.128509, 0.128784, 0.379606, 1)
 ambient_light_energy = 0.8
 glow_enabled = true
@@ -54,6 +54,7 @@ inventory_slots = Array[ExtResource("2_d88b2")]([null, null, null, null, null, n
 environment = SubResource("Environment_tgly4")
 
 [node name="MainPlatform" type="CSGBox3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_02b4t")
 size = Vector3(1000, 1, 1000)
 
@@ -70,13 +71,16 @@ transform = Transform3D(-0.744253, 0, -0.667897, 0, 1, 0, 0.667897, 0, -0.744253
 inventory_data = SubResource("Resource_lod2t")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, 0.301201)
+transform = Transform3D(1, 0, 0, 0, 0.827081, -0.562083, 0, 0.562083, 0.827081, 0, 36.4601, 24.627)
+visible = false
 light_color = Color(0.705882, 0.705882, 0.8, 1)
-light_energy = 0.8
+light_energy = 3.0
+light_indirect_energy = 0.0
 shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1112, 5, 19.9184)
+visible = false
 light_color = Color(0.647059, 0.588235, 0.8, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -84,6 +88,7 @@ omni_range = 25.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8464, 5, 20.3598)
+visible = false
 light_color = Color(0.588235, 0.65098, 0.8, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -92,6 +97,7 @@ omni_attenuation = 1.5
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0851, 5, -20.0808)
+visible = false
 light_color = Color(0.705882, 0.705882, 0.8, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -100,6 +106,7 @@ omni_attenuation = 1.5
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5703, 5, -20.394)
+visible = false
 light_color = Color(0.588235, 0.8, 0.705882, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -108,6 +115,7 @@ omni_attenuation = 1.5
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.9452, 17.0023)
+visible = false
 light_color = Color(0.8, 0.8, 0.8, 1)
 light_energy = 10.0
 omni_range = 30.0
@@ -115,16 +123,16 @@ omni_range = 30.0
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
 
 [node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1852, 2.48925, 3.486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64561, 2.48925, -10.514)
 
 [node name="MagicalScale" parent="." instance=ExtResource("7_m8lkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0339, 0.5, 0.487538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0339, 0.5, 0.487538)
 
 [node name="EctoplasmPool" parent="." instance=ExtResource("8_lutmf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5197, 2, 0.940789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4803, 2, -10.0592)
 
 [node name="MortalPortalArea" parent="." instance=ExtResource("9_u0vhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.537173, 2.25, 12.5749)
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0.537, 6.80928, 7.575)
 
 [node name="ParanormalPortalArea" parent="." instance=ExtResource("10_fmgri")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0084362, 2.06492, -16.6029)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0084362, 2.06492, -9.6029)
