@@ -10,6 +10,25 @@ extends Area3D
 @onready var spawn_timer = $Timer
 
 const BOX_SCENE = preload("res://Packages/scenes/PackageProps/cardboard_box_test.tscn")
+const BOX_VARIANTS = [
+	# Cardboard boxes
+	preload("res://Packages/scenes/PackageProps/cardboard_box_1.tscn"),
+	preload("res://Packages/scenes/PackageProps/cardboard_box_2.tscn"),
+	preload("res://Packages/scenes/PackageProps/cardboard_box_3.tscn"),
+	preload("res://Packages/scenes/PackageProps/cardboard_box_4.tscn"),
+	preload("res://Packages/scenes/PackageProps/cardboard_box_5.tscn"),
+	preload("res://Packages/scenes/PackageProps/cardboard_box_8.tscn"),
+	# Crates
+	preload("res://Packages/scenes/PackageProps/crate_1.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_2.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_3.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_4.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_6.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_7.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_8.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_10.tscn"),
+	preload("res://Packages/scenes/PackageProps/crate_11.tscn")
+]
 
 func _ready():
 	if !spawn_timer:
@@ -25,8 +44,48 @@ func _on_spawn_timer_timeout():
 	print("\n=== Spawning New Box ===")
 	spawn_cardboard_box()
 
+func get_variant_mesh(variant_scene: Node) -> Mesh:
+	# Try cardboard box pattern
+	var mesh_node = variant_scene.find_child("CardboardBox_*", true)
+	if mesh_node and mesh_node.mesh:
+		return mesh_node.mesh
+		
+	# Try crate pattern
+	mesh_node = variant_scene.find_child("Crate_*", true)
+	if mesh_node and mesh_node.mesh:
+		return mesh_node.mesh
+		
+	# If both patterns fail, try finding any MeshInstance3D
+	var mesh_instances = []
+	for child in variant_scene.get_children():
+		if child is MeshInstance3D and child.mesh:
+			mesh_instances.append(child)
+	
+	if mesh_instances.size() > 0:
+		return mesh_instances[0].mesh
+		
+	return null
+
 func spawn_cardboard_box():
 	var box = BOX_SCENE.instantiate()
+	
+	# Get random variant mesh
+	var variant_num = randi() % BOX_VARIANTS.size()
+	var random_variant = BOX_VARIANTS[variant_num].instantiate()
+	print("Trying to access variant: ", variant_num)
+	
+	var variant_mesh = get_variant_mesh(random_variant)
+	
+	if variant_mesh:
+		print("Found mesh")
+		var mesh_instance = box.find_child("MeshInstance3D", true)
+		if mesh_instance:
+			print("Applying mesh")
+			mesh_instance.mesh = variant_mesh
+	else:
+		print("Failed to find mesh")
+		
+	random_variant.queue_free()
 	
 	# Configure paranormal properties BEFORE adding to scene
 	var paranormal_component = box.find_child("ParanormalBoxComponent", true)
