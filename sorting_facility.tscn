@@ -71,8 +71,7 @@ transform = Transform3D(-0.744253, 0, -0.667897, 0, 1, 0, 0.667897, 0, -0.744253
 inventory_data = SubResource("Resource_lod2t")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.827081, -0.562083, 0, 0.562083, 0.827081, 0, 36.4601, 24.627)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.495459, 0.868632, 0, -0.868632, 0.495459, 0, 36.4601, 24.627)
 light_color = Color(0.705882, 0.705882, 0.8, 1)
 light_energy = 3.0
 light_indirect_energy = 0.0
@@ -123,13 +122,13 @@ omni_range = 30.0
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
 
 [node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64561, 2.48925, -10.514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.17, 0)
 
 [node name="MagicalScale" parent="." instance=ExtResource("7_m8lkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0339, 0.5, 0.487538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.05, 0)
 
 [node name="EctoplasmPool" parent="." instance=ExtResource("8_lutmf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4803, 2, -10.0592)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 0)
 
 [node name="MortalPortalArea" parent="." instance=ExtResource("9_u0vhu")]
 transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0.537, 6.8, 7.575)

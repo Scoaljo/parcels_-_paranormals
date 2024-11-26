@@ -5,22 +5,30 @@ extends Area3D
 @export var rejection_height: float = 2.0
 
 @export_group("Visual Properties")
-@export var base_color := Color(0.1, 0.2, 0.4, 0.3)  # Dark blue base
-@export var active_color := Color(0.4, 0.2, 0.8, 0.4)  # Brighter purple when active
-@export var pulse_speed := 1.2
-@export var field_size := Vector3(3.0, 3.0, 3.0)
+@export var idle_intensity: float = 1.0
+@export var active_intensity: float = 2.0
+@export var base_rotation_speed: float = 0.2
+@export var field_size := Vector3(2.0, 2.0, 2.0)
+
+# Core color scheme
+var pool_color := Color(0.0, 0.4, 1.0)  # Bright blue base
+const ACTIVE_COLOR := Color(0.2, 0.6, 1.0)  # Lighter blue when active
 
 # Visual state tracking
 var time_passed: float = 0.0
 var active_repulsion: bool = false
 var repelled_bodies: Array[Node3D] = []
 
-@onready var field_mesh: MeshInstance3D = $FieldMesh
+# Node references
+@onready var core_field: MeshInstance3D = $CoreField
+@onready var outer_field: MeshInstance3D = $OuterField
 
-# Store info about interacting boxes
+# Material references
+var core_material: StandardMaterial3D
+var outer_material: StandardMaterial3D
+
 class BoxInfo:
 	var should_repel: bool
-	
 	func _init(repel: bool):
 		should_repel = repel
 
@@ -32,42 +40,62 @@ func _ready():
 	setup_visual_elements()
 
 func setup_visual_elements():
-	# Setup core field material
-	var field_material = StandardMaterial3D.new()
-	field_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	field_material.albedo_color = base_color
-	field_material.emission_enabled = true
-	field_material.emission = Color(base_color.r, base_color.g, base_color.b, 1.0)
-	field_material.emission_energy_multiplier = 1.0
-	field_material.metallic = 0.8
-	field_material.roughness = 0.1
+	# Core field material
+	core_material = StandardMaterial3D.new()
+	core_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	core_material.albedo_color = Color(pool_color.r, pool_color.g, pool_color.b, 0.4)  # Increased alpha
+	core_material.emission_enabled = true
+	core_material.emission = pool_color
+	core_material.emission_energy_multiplier = idle_intensity
+	core_material.cull_mode = BaseMaterial3D.CULL_DISABLED  # Show both sides
 	
-	if field_mesh:
-		var cube = BoxMesh.new()
-		cube.size = field_size
-		field_mesh.mesh = cube
-		field_mesh.material_override = field_material
+	# Outer field material
+	outer_material = StandardMaterial3D.new()
+	outer_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	outer_material.albedo_color = Color(pool_color.r, pool_color.g, pool_color.b, 0.2)  # More transparent
+	outer_material.emission_enabled = true
+	outer_material.emission = pool_color.lightened(0.2)
+	outer_material.emission_energy_multiplier = idle_intensity * 0.5
+	outer_material.cull_mode = BaseMaterial3D.CULL_DISABLED  # Show both sides
+	
+	if core_field:
+		var core_mesh = BoxMesh.new()
+		core_mesh.size = field_size
+		core_field.mesh = core_mesh
+		core_field.material_override = core_material
+	
+	if outer_field:
+		var outer_mesh = BoxMesh.new()
+		outer_mesh.size = field_size * 1.1  # Slightly larger
+		outer_field.mesh = outer_mesh
+		outer_field.material_override = outer_material
 
 func _process(delta):
 	time_passed += delta
 	update_visual_effects(delta)
 
-func update_visual_effects(_delta):
-	if field_mesh and field_mesh.material_override:
-		var mat = field_mesh.material_override as StandardMaterial3D
-		
-		# Subtle pulsing effect
-		var pulse = sin(time_passed * pulse_speed) * 0.5 + 0.5
-		
-		if active_repulsion:
-			var current_color = base_color.lerp(active_color, pulse)
-			mat.albedo_color = current_color
-			mat.emission = Color(current_color.r, current_color.g, current_color.b, 1.0)
-			mat.emission_energy_multiplier = lerp(1.0, 2.0, pulse)
-		else:
-			mat.albedo_color = base_color
-			mat.emission = Color(base_color.r, base_color.g, base_color.b, 1.0)
-			mat.emission_energy_multiplier = lerp(2.0, 5.0, pulse)
+func update_visual_effects(delta: float):
+	# Rotate fields in opposite directions
+	if core_field:
+		core_field.rotate_y(base_rotation_speed * delta)
+	if outer_field:
+		outer_field.rotate_y(-base_rotation_speed * 0.5 * delta)
+	
+	# Calculate pulse effect
+	var pulse = (sin(time_passed * 2.0) * 0.3 + 0.7)
+	
+	if active_repulsion:
+		update_material_intensity(core_material, ACTIVE_COLOR, pulse * active_intensity)
+		update_material_intensity(outer_material, ACTIVE_COLOR.lightened(0.2), pulse * active_intensity * 0.5)
+	else:
+		update_material_intensity(core_material, pool_color, pulse * idle_intensity)
+		update_material_intensity(outer_material, pool_color.lightened(0.2), pulse * idle_intensity * 0.5)
+
+func update_material_intensity(material: StandardMaterial3D, color: Color, intensity: float):
+	if material:
+		material.emission = color
+		material.albedo_color = Color(color.r, color.g, color.b, 0.3)
+		material.emission_energy_multiplier = intensity
 
 func _physics_process(_delta):
 	active_repulsion = false

@@ -4,7 +4,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://dtnyvbl2d4lxg" path="res://COGITO/Animations/Wieldables/Wieldable_Flashlight.res" id="2_54huf"]
 [ext_resource type="Script" path="res://COGITO/Assets/Shader/ViewmodelSpace.gd" id="3_n878p"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rvru"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rd1dr"]
 albedo_color = Color(0.101961, 0.101961, 0.180392, 1)
 metallic = 0.9
 roughness = 0.1
@@ -13,11 +13,11 @@ emission = Color(0.164706, 0.164706, 0.305882, 1)
 emission_energy_multiplier = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_m0iot"]
-material = SubResource("StandardMaterial3D_4rvru")
+material = SubResource("StandardMaterial3D_rd1dr")
 radius = 0.1
 height = 0.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plugc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gr1vx"]
 albedo_color = Color(0.101961, 0.101961, 0.180392, 1)
 metallic = 0.9
 roughness = 0.1
@@ -26,11 +26,11 @@ emission = Color(0.164706, 0.101961, 0.305882, 1)
 emission_energy_multiplier = 0.2
 
 [sub_resource type="TorusMesh" id="TorusMesh_jfhm4"]
-material = SubResource("StandardMaterial3D_plugc")
+material = SubResource("StandardMaterial3D_gr1vx")
 inner_radius = 0.15
 outer_radius = 0.17
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3mmh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cc3v4"]
 albedo_color = Color(0.101961, 0.101961, 0.180392, 1)
 metallic = 0.9
 roughness = 0.1
@@ -39,11 +39,11 @@ emission = Color(0.164706, 0.101961, 0.305882, 1)
 emission_energy_multiplier = 0.2
 
 [sub_resource type="TorusMesh" id="TorusMesh_oxlq8"]
-material = SubResource("StandardMaterial3D_b3mmh")
+material = SubResource("StandardMaterial3D_cc3v4")
 inner_radius = 0.2
 outer_radius = 0.22
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tshb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixdsy"]
 albedo_color = Color(0.101961, 0.101961, 0.180392, 1)
 metallic = 0.9
 roughness = 0.1
@@ -52,7 +52,7 @@ emission = Color(0.164706, 0.101961, 0.305882, 1)
 emission_energy_multiplier = 0.2
 
 [sub_resource type="TorusMesh" id="TorusMesh_gsptp"]
-material = SubResource("StandardMaterial3D_5tshb")
+material = SubResource("StandardMaterial3D_ixdsy")
 inner_radius = 0.25
 outer_radius = 0.27
 

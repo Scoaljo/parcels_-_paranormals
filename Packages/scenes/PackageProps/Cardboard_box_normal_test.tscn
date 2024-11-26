@@ -50,7 +50,6 @@ script = ExtResource("3_ple67")
 is_paranormal = true
 paranormal_weight = 50.0
 emits_aura = true
-aura_color = Color(0.501961, 0, 0.8, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_cn0bt")
