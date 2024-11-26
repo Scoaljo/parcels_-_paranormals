@@ -1,68 +1,51 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm4nle3gv82ye"]
+[gd_scene load_steps=6 format=3 uid="uid://bgtmaojcf3ykb"]
 
-[ext_resource type="Script" path="res://ParanormalAreaComponent.gd" id="1_g4dwp"]
+[ext_resource type="Script" path="res://ParanormalPortalAreaComponent.gd" id="1_lm50e"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wchc7"]
-height = 3.0
+height = 0.5
 radius = 1.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pruq"]
-albedo_color = Color(1, 0.2, 0.2, 1)
-metallic = 0.8
-roughness = 0.2
-emission_enabled = true
-emission = Color(1, 0.2, 0, 1)
+[sub_resource type="TorusMesh" id="TorusMesh_r6s76"]
+inner_radius = 1.9
+outer_radius = 2.0
 
-[sub_resource type="TorusMesh" id="TorusMesh_mmon3"]
-material = SubResource("StandardMaterial3D_3pruq")
-inner_radius = 1.4
-outer_radius = 1.5
+[sub_resource type="TorusMesh" id="TorusMesh_80kun"]
+inner_radius = 1.7
+outer_radius = 1.8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1363m"]
-albedo_color = Color(1, 0.2, 0.8, 1)
-metallic = 0.8
-roughness = 0.2
-emission_enabled = true
-emission = Color(1, 0.0411849, 0.491659, 1)
-emission_energy_multiplier = 2.0
-
-[sub_resource type="TorusMesh" id="TorusMesh_p0lqq"]
-material = SubResource("StandardMaterial3D_1363m")
-inner_radius = 1.1
-outer_radius = 1.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqbo1"]
-transparency = 1
-albedo_color = Color(0.8, 0.1, 0.6, 0)
-emission_enabled = true
-emission = Color(0.903165, 0.162556, 0.795592, 1)
-emission_energy_multiplier = 3.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_r8u2s"]
-material = SubResource("StandardMaterial3D_bqbo1")
-top_radius = 0.8
-bottom_radius = 0.8
+[sub_resource type="CylinderMesh" id="CylinderMesh_5ftui"]
+top_radius = 1.7
+bottom_radius = 1.7
 height = 0.1
 
 [node name="BasePortalArea" type="Node3D"]
-script = ExtResource("1_g4dwp")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_lm50e")
 
 [node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_wchc7")
 
-[node name="BaseRing" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("TorusMesh_mmon3")
-
-[node name="InnerRing" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("TorusMesh_p0lqq")
-
-[node name="PortalCore" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_r8u2s")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="BasePortalCore" type="Node3D" parent="."]
+
+[node name="PortalRim" type="MeshInstance3D" parent="BasePortalCore"]
+mesh = SubResource("TorusMesh_r6s76")
+
+[node name="InnerRing" type="MeshInstance3D" parent="BasePortalCore/PortalRim"]
+mesh = SubResource("TorusMesh_80kun")
+
+[node name="PortalCenter" type="MeshInstance3D" parent="BasePortalCore/PortalRim"]
+mesh = SubResource("CylinderMesh_5ftui")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BasePortalCore/PortalRim/PortalCenter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325145, 0)
+light_color = Color(1, 0.2, 0.5, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 8.0

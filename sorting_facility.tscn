@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dw1uy1nii005w" path="res://magical_scale.tscn" id="7_m8lkw"]
 [ext_resource type="PackedScene" uid="uid://c7s0pnjk10x4b" path="res://EctoplasmPool.tscn" id="8_lutmf"]
 [ext_resource type="PackedScene" uid="uid://dvvunfqidipri" path="res://MortalPortalArea.tscn" id="9_u0vhu"]
-[ext_resource type="PackedScene" uid="uid://dm4nle3gv82ye" path="res://ParanormalPortalArea.tscn" id="10_fmgri"]
+[ext_resource type="PackedScene" uid="uid://bgtmaojcf3ykb" path="res://ParanormalPortalArea.tscn" id="10_fmgri"]
 
 [sub_resource type="Environment" id="Environment_tgly4"]
 background_mode = 1
@@ -132,7 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0339, 0.5, 0.487538)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4803, 2, -10.0592)
 
 [node name="MortalPortalArea" parent="." instance=ExtResource("9_u0vhu")]
-transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0.537, 6.80928, 7.575)
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0.537, 6.8, 7.575)
 
 [node name="ParanormalPortalArea" parent="." instance=ExtResource("10_fmgri")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0084362, 2.06492, -9.6029)
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, -0.537, 6.8, -7.575)
