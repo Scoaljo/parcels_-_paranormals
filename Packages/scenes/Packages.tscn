@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dhd6blk2ypaql" path="res://Packages/scenes/PackageProps/crate_6.tscn" id="15_vlp7s"]
 [ext_resource type="PackedScene" uid="uid://02fvr50j1nhy" path="res://Packages/scenes/PackageProps/crate_5.tscn" id="16_1kwvd"]
 [ext_resource type="PackedScene" uid="uid://dpjp7iko8qqg6" path="res://Packages/scenes/PackageProps/crate_4.tscn" id="17_y3eyq"]
-[ext_resource type="PackedScene" uid="uid://b5qwkcac5hks4" path="res://Packages/scenes/PackageProps/crate_11.tscn" id="18_ny3hb"]
+[ext_resource type="PackedScene" uid="uid://b5qwkcac5hks4" path="res://COGITO/DemoScenes/DemoPrefabs/crate_11.tscn" id="18_ny3hb"]
 [ext_resource type="PackedScene" uid="uid://cku83kd66c5fs" path="res://Packages/scenes/PackageProps/crate_3.tscn" id="19_7mf41"]
 [ext_resource type="PackedScene" uid="uid://dylvmxskd42uh" path="res://Packages/scenes/PackageProps/crate_2.tscn" id="20_iwxnq"]
 [ext_resource type="PackedScene" uid="uid://biab6wbncy0wp" path="res://Packages/scenes/PackageProps/crate_9.tscn" id="21_p0tmt"]

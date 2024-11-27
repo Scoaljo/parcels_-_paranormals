@@ -30,18 +30,21 @@ var hurt_tween : Tween
 var is_inventory_open : bool = false
 var device_id : int = -1
 var interaction_texture : Texture2D
+var void_manager: Node # Added for sorting game
 
 @onready var damage_overlay = $DamageOverlay
 @onready var inventory_interface = $InventoryInterface
-@onready var wieldable_hud: PanelContainer = $MarginContainer_BottomUI/WieldableHud # Displays wieldable icons and data. Hides when no wieldable equipped.
+@onready var wieldable_hud: PanelContainer = $MarginContainer_BottomUI/WieldableHud
 @onready var prompt_area: Control = $PromptArea
 @onready var hint_area: Control = $HintArea
 @onready var ui_attribute_area : VBoxContainer = $MarginContainer_BottomUI/PlayerAttributes/MarginContainer/VBoxContainer
 @onready var fade_in_screen: Panel = $FadeInScreen
 @onready var crosshair: Control = $Crosshair
+# Added for sorting game
+@onready var timer_label: Label = $MarginContainer_TopUI/HBoxContainer/TimerContainer/TimerLabel
+@onready var counter_label: Label = $MarginContainer_TopUI/HBoxContainer/CounterContainer/CounterLabel
 
 #endregion
-
 
 func _ready():
 	# Connect to signal that detects change of input device
@@ -59,6 +62,23 @@ func _ready():
 	connect_to_external_inventories.call_deferred()
 	
 	fade_in.call_deferred(1.5)
+	
+	# Initialize void manager connection
+	void_manager = get_node("/root/SortingFacility/VoidManager")
+	if void_manager:
+		print("Found VoidManager")
+	
+	# Initialize HUD displays
+	if timer_label:
+		timer_label.text = "00:00.00"
+	if counter_label:
+		counter_label.text = "0/15"
+
+func _process(_delta: float) -> void:
+	if void_manager:
+		if void_manager.is_game_running or void_manager.game_completed:
+			timer_label.text = void_manager.format_time(void_manager.game_time)
+		counter_label.text = str(void_manager.correct_sorts) + "/" + str(void_manager.REQUIRED_SORTS)
 
 
 func setup_player(new_player : Node):

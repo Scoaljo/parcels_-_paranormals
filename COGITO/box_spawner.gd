@@ -20,14 +20,10 @@ const BOX_VARIANTS = [
 	preload("res://Packages/scenes/PackageProps/cardboard_box_8.tscn"),
 	# Crates
 	preload("res://Packages/scenes/PackageProps/crate_1.tscn"),
-	preload("res://Packages/scenes/PackageProps/crate_2.tscn"),
 	preload("res://Packages/scenes/PackageProps/crate_3.tscn"),
-	preload("res://Packages/scenes/PackageProps/crate_4.tscn"),
 	preload("res://Packages/scenes/PackageProps/crate_6.tscn"),
 	preload("res://Packages/scenes/PackageProps/crate_7.tscn"),
-	preload("res://Packages/scenes/PackageProps/crate_8.tscn"),
 	preload("res://Packages/scenes/PackageProps/crate_10.tscn"),
-	preload("res://Packages/scenes/PackageProps/crate_11.tscn")
 ]
 
 func _ready():

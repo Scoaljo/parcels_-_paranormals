@@ -52,6 +52,49 @@ prompt_component = ExtResource("3_06ipe")
 hint_component = ExtResource("17_bidre")
 ui_attribute_prefab = ExtResource("20_lscav")
 
+[node name="MarginContainer_TopUI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer_TopUI"]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftSpacer" type="Control" parent="MarginContainer_TopUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimerContainer" type="Control" parent="MarginContainer_TopUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimerLabel" type="Label" parent="MarginContainer_TopUI/HBoxContainer/TimerContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="CounterContainer" type="Control" parent="MarginContainer_TopUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CounterLabel" type="Label" parent="MarginContainer_TopUI/HBoxContainer/CounterContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "0/15"
+horizontal_alignment = 2
+
 [node name="DamageOverlay" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -461,11 +504,13 @@ vertical_alignment = 1
 [node name="TabContainer" type="TabContainer" parent="QuestHUD/QuestDisplay/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_j6s1a")
+current_tab = 0
 
 [node name="Active" type="VBoxContainer" parent="QuestHUD/QuestDisplay/VBoxContainer/TabContainer"]
 layout_mode = 2
 theme = ExtResource("5_j6s1a")
 theme_override_constants/separation = 4
+metadata/_tab_index = 0
 
 [node name="QuestEntry" parent="QuestHUD/QuestDisplay/VBoxContainer/TabContainer/Active" instance=ExtResource("16_qsjbq")]
 layout_mode = 2
@@ -476,10 +521,12 @@ layout_mode = 2
 [node name="Completed" type="VBoxContainer" parent="QuestHUD/QuestDisplay/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Failed" type="VBoxContainer" parent="QuestHUD/QuestDisplay/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="FadeInScreen" type="Panel" parent="."]
 visible = false

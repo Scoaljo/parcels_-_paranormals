@@ -111,7 +111,19 @@ func _on_body_entered(body: Node3D):
 		if !paranormal_component.is_paranormal:
 			handle_mortal_package(body)
 		else:
-			reject_paranormal_package(body)
+			# Wrong sort - paranormal package in mortal portal
+			package_processed.emit("wrong")
+			show_feedback(false)
+			
+			if audio_player and success_sound:
+				audio_player.stream = success_sound
+				audio_player.play()
+			
+			var carryable = body.find_child("CarryableComponent", true)
+			if carryable:
+				carryable.leave()
+			
+			process_package(body)
 
 func handle_mortal_package(package: RigidBody3D):
 	package_processed.emit("mortal")
@@ -126,18 +138,6 @@ func handle_mortal_package(package: RigidBody3D):
 		carryable.leave()
 	
 	process_package(package)
-
-func reject_paranormal_package(package: RigidBody3D):
-	show_feedback(false)
-	
-	if audio_player and rejection_sound:
-		audio_player.stream = rejection_sound
-		audio_player.play()
-	
-	if package is RigidBody3D:
-		var direction = (package.global_position - global_position).normalized()
-		direction.y = abs(direction.y) * 2
-		package.apply_central_impulse(direction * 8.0)
 
 func show_feedback(accepted: bool):
 	# Simply update colors

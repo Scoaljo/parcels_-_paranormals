@@ -102,19 +102,6 @@ func update_portal_effects(delta: float):
 	if core_material:
 		core_material.emission_energy_multiplier = idle_intensity * pulse * 2.0
 
-func reject_mortal_package(package: RigidBody3D):
-	show_feedback(false)
-	
-	if audio_player and rejection_sound:
-		audio_player.stream = rejection_sound
-		audio_player.play()
-	
-	# More forceful rejection for paranormal portal
-	if package is RigidBody3D:
-		var direction = (package.global_position - global_position).normalized()
-		direction.y = abs(direction.y) * 2.5  # Stronger upward boost
-		package.apply_central_impulse(direction * 10.0)  # Stronger repulsion
-
 func _on_body_entered(body: Node3D):
 	if not body is RigidBody3D:
 		return
@@ -122,9 +109,23 @@ func _on_body_entered(body: Node3D):
 	var paranormal_component = body.find_child("ParanormalBoxComponent", true)
 	if paranormal_component:
 		if paranormal_component.is_paranormal:
+			# Correct sort - paranormal package in paranormal portal
 			handle_paranormal_package(body, paranormal_component)
 		else:
-			reject_mortal_package(body)
+			# Wrong sort - mortal package in paranormal portal
+			package_processed.emit("wrong")
+			show_feedback(false)
+			
+			# Process the package regardless
+			if audio_player and success_sound:
+				audio_player.stream = success_sound
+				audio_player.play()
+			
+			var carryable = body.find_child("CarryableComponent", true)
+			if carryable:
+				carryable.leave()
+			
+			process_package(body)
 
 func handle_paranormal_package(package: RigidBody3D, paranormal_component: Node):
 	# Get package type
@@ -149,18 +150,6 @@ func handle_paranormal_package(package: RigidBody3D, paranormal_component: Node)
 		carryable.leave()
 	
 	process_package(package)
-
-func reject_paranormal_package(package: RigidBody3D):
-	show_feedback(false)
-	
-	if audio_player and rejection_sound:
-		audio_player.stream = rejection_sound
-		audio_player.play()
-	
-	if package is RigidBody3D:
-		var direction = (package.global_position - global_position).normalized()
-		direction.y = abs(direction.y) * 2
-		package.apply_central_impulse(direction * 8.0)
 
 func show_feedback(accepted: bool):
 	# Simply update colors

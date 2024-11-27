@@ -101,7 +101,19 @@ func _on_body_entered(body: Node3D):
 		if paranormal_component.is_paranormal:
 			handle_paranormal_package(body, paranormal_component)
 		else:
-			reject_mortal_package(body)
+			# Wrong sort - mortal package in paranormal portal
+			package_processed.emit("wrong")
+			show_feedback(false)
+			
+			if audio_player and success_sound:
+				audio_player.stream = success_sound
+				audio_player.play()
+			
+			var carryable = body.find_child("CarryableComponent", true)
+			if carryable:
+				carryable.leave()
+			
+			process_package(body)
 
 func handle_paranormal_package(package: RigidBody3D, paranormal_component: Node):
 	# Emit signal with package type
@@ -148,21 +160,6 @@ func process_package(package: RigidBody3D):
 	
 	package.freeze = true
 	tween.tween_callback(func(): package.queue_free()).set_delay(0.3)
-
-func reject_mortal_package(package: RigidBody3D):
-	# Visual feedback
-	show_feedback(false)
-	
-	# Play rejection sound
-	if audio_player and rejection_sound:
-		audio_player.stream = rejection_sound
-		audio_player.play()
-	
-	# More forceful rejection for paranormal portal
-	if package is RigidBody3D:
-		var direction = (package.global_position - global_position).normalized()
-		direction.y = abs(direction.y) * 2.5  # Stronger upward boost
-		package.apply_central_impulse(direction * 10.0)  # Stronger repulsion
 
 func show_feedback(accepted: bool):
 	# Cancel any ongoing feedback
