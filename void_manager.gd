@@ -1,4 +1,5 @@
 extends Node3D
+signal game_completed_with_stats(final_time: float, unsorted_penalty: float)
 
 const SAFE_RADIUS := 20.0    # Center play area
 const WARNING_RADIUS := 40.0  # First void zone
@@ -10,7 +11,7 @@ var environment: Environment
 var initial_fog_density: float
 
 # Game Configuration
-const REQUIRED_SORTS := 5
+const REQUIRED_SORTS := 2
 const WRONG_SORT_PENALTY := 15.0  # seconds
 const UNSORTED_BOX_PENALTY := 5.0  # seconds per box
 
@@ -111,8 +112,10 @@ func complete_game() -> void:
 	# Add penalty for unsorted boxes
 	var boxes = get_tree().get_nodes_in_group("packages")
 	var unsorted_count = boxes.size()
-	game_time += unsorted_count * UNSORTED_BOX_PENALTY
+	var unsorted_penalty = unsorted_count * UNSORTED_BOX_PENALTY
+	game_time += unsorted_penalty
 	
+	emit_signal("game_completed_with_stats", game_time, unsorted_penalty)
 	print("Game Complete! Final Time: ", format_time(game_time))
 
 # Utility function to format time as "MM:SS.CC"

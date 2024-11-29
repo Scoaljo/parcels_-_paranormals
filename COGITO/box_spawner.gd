@@ -8,6 +8,7 @@ extends Area3D
 
 @onready var collision_shape = $CollisionShape3D
 @onready var spawn_timer = $Timer
+@onready var void_manager = get_node("/root/SortingFacility/VoidManager")
 
 const BOX_SCENE = preload("res://Packages/scenes/PackageProps/cardboard_box_test.tscn")
 const BOX_VARIANTS = [
@@ -37,8 +38,12 @@ func _ready():
 	print("Spawner initialized with interval: ", spawn_interval)
 
 func _on_spawn_timer_timeout():
-	print("\n=== Spawning New Box ===")
-	spawn_cardboard_box()
+	# Only spawn if game is running and not completed
+	if void_manager and (!void_manager.game_completed):
+		print("\n=== Spawning New Box ===")
+		spawn_cardboard_box()
+	else:
+		spawn_timer.stop()
 
 func get_variant_mesh(variant_scene: Node) -> Mesh:
 	# Try cardboard box pattern
@@ -64,6 +69,7 @@ func get_variant_mesh(variant_scene: Node) -> Mesh:
 
 func spawn_cardboard_box():
 	var box = BOX_SCENE.instantiate()
+	box.add_to_group("packages")  # Add to packages group for counting
 	
 	# Get random variant mesh
 	var variant_num = randi() % BOX_VARIANTS.size()
@@ -112,7 +118,7 @@ func spawn_cardboard_box():
 	# Get the RigidBody3D component
 	var rigid_body = box as RigidBody3D
 	if rigid_body:
-		# Add initial downward velocity with slight random horizontal movement
+		# Add initial downward velocity with slight random movement
 		var velocity = Vector3(
 			randf_range(-1, 1),  # Small random X movement
 			-eject_force,        # Downward force

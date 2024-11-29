@@ -43,6 +43,9 @@ var void_manager: Node # Added for sorting game
 # Added for sorting game
 @onready var timer_label: Label = $MarginContainer_TopUI/HBoxContainer/TimerContainer/TimerLabel
 @onready var counter_label: Label = $MarginContainer_TopUI/HBoxContainer/CounterContainer/CounterLabel
+@onready var victory_screen: Panel = $Panel
+@onready var victory_time_label: Label = $Panel/CenterContainer/VBoxContainer/FinalTimeLabel
+@onready var victory_penalty_label: Label = $Panel/CenterContainer/VBoxContainer/PenaltyLabel
 
 #endregion
 
@@ -51,6 +54,10 @@ func _ready():
 	InputHelper.device_changed.connect(_on_input_device_change)
 	# Calling this function once to set proper input icons
 	_on_input_device_change(InputHelper.device,InputHelper.device_index)
+	
+	victory_screen.hide()
+	if void_manager:
+		void_manager.game_completed_with_stats.connect(_on_game_completed)
 	
 	$DeathScreen.hide()
 	damage_overlay.modulate = Color.TRANSPARENT
@@ -73,6 +80,14 @@ func _ready():
 		timer_label.text = "00:00.00"
 	if counter_label:
 		counter_label.text = "0/15"
+		
+	# Initialize void manager connection and victory screen
+	void_manager = get_node("/root/SortingFacility/VoidManager")
+	if void_manager:
+		print("Found VoidManager")
+		void_manager.game_completed_with_stats.connect(_on_game_completed)
+		
+	$Panel.hide()  # Hide victory screen initially
 
 func _process(_delta: float) -> void:
 	if void_manager:
@@ -276,3 +291,17 @@ func _on_inventory_interface_drop_slot_data(slot_data: InventorySlotPD):
 			node.slot_data = slot_data
 
 	CogitoSceneManager._current_scene_root_node.add_child(dropped_item)
+	
+func _on_game_completed(final_time: float, unsorted_penalty: float):
+	$Panel.show()
+	if player:
+		player._on_pause_movement()
+		player.is_showing_ui = true
+	# Base time
+	victory_time_label.text = "Base Time: " + void_manager.format_time(final_time - unsorted_penalty)
+	# Penalty time
+	victory_penalty_label.text = "Box Penalty: +" + void_manager.format_time(unsorted_penalty)
+	# Total time
+	$Panel/CenterContainer/VBoxContainer/TotalTimeLabel.text = "Total Time: " + void_manager.format_time(final_time)
+	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
