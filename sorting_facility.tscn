@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6v5rsjtk3kjr"]
+[gd_scene load_steps=18 format=3 uid="uid://b6v5rsjtk3kjr"]
 
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PackedScenes/cogito_player.tscn" id="1_vvhak"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="2_d88b2"]
+[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/WieldableItemPD.gd" id="3_8qt77"]
 [ext_resource type="Script" path="res://COGITO/InventoryPD/cogito_inventory.gd" id="3_ghji4"]
 [ext_resource type="Script" path="res://void_manager.gd" id="4_pyi2r"]
 [ext_resource type="PackedScene" uid="uid://cwral5ah8msdk" path="res://delivery_tube_system_1.tscn" id="5_3q5fd"]
@@ -40,13 +41,36 @@ roughness = 0.4
 [sub_resource type="BoxShape3D" id="BoxShape3D_myms6"]
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="Resource" id="Resource_v8drn"]
+script = ExtResource("3_8qt77")
+no_reload = false
+charge_max = 0.0
+ammo_item_name = ""
+charge_current = 0.0
+wieldable_range = 0.0
+wieldable_damage = 0.0
+name = ""
+description = ""
+is_stackable = false
+stack_size = 0
+drop_scene = null
+hint_text_on_use = ""
+item_size = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_ap646"]
+script = ExtResource("2_d88b2")
+inventory_item = SubResource("Resource_v8drn")
+quantity = 1
+origin_index = -1
+
 [sub_resource type="Resource" id="Resource_lod2t"]
 resource_local_to_scene = true
 script = ExtResource("3_ghji4")
 grid = true
-starter_inventory = Array[ExtResource("2_d88b2")]([])
+starter_inventory = Array[ExtResource("2_d88b2")]([null])
 inventory_size = Vector2i(5, 3)
 inventory_slots = Array[ExtResource("2_d88b2")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+first_slot = SubResource("Resource_ap646")
 
 [node name="SortingFacility" type="Node3D"]
 
@@ -54,7 +78,6 @@ inventory_slots = Array[ExtResource("2_d88b2")]([null, null, null, null, null, n
 environment = SubResource("Environment_tgly4")
 
 [node name="MainPlatform" type="CSGBox3D" parent="."]
-visible = false
 material_override = SubResource("StandardMaterial3D_02b4t")
 size = Vector3(1000, 1, 1000)
 
@@ -67,7 +90,7 @@ shape = SubResource("BoxShape3D_myms6")
 script = ExtResource("4_pyi2r")
 
 [node name="CogitoPlayer" parent="." instance=ExtResource("1_vvhak")]
-transform = Transform3D(-0.744253, 0, -0.667897, 0, 1, 0, 0.667897, 0, -0.744253, 4.21304, 2.2001, 0)
+transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -4.37114e-08, -16.986, 2.2001, 0)
 inventory_data = SubResource("Resource_lod2t")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -122,16 +145,16 @@ omni_range = 30.0
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
 
 [node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
 
 [node name="MagicalScale" parent="." instance=ExtResource("7_m8lkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
 
 [node name="EctoplasmPool" parent="." instance=ExtResource("8_lutmf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.8, 0)
 
 [node name="MortalPortalArea" parent="." instance=ExtResource("9_u0vhu")]
-transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0.537, 6.8, 7.575)
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0.537, 6.8, 9)
 
 [node name="ParanormalPortalArea" parent="." instance=ExtResource("10_fmgri")]
-transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, -0.537, 6.8, -7.575)
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, -0.537, 6.8, -9)

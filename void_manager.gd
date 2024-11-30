@@ -11,9 +11,9 @@ var environment: Environment
 var initial_fog_density: float
 
 # Game Configuration
-const REQUIRED_SORTS := 2
-const WRONG_SORT_PENALTY := 15.0  # seconds
-const UNSORTED_BOX_PENALTY := 5.0  # seconds per box
+const REQUIRED_SORTS := 10
+const WRONG_SORT_PENALTY := 10.0  # seconds
+const UNSORTED_BOX_PENALTY := 2.0  # seconds per box
 
 # Game State
 var game_time: float = 0.0
