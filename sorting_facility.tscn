@@ -78,6 +78,7 @@ first_slot = SubResource("Resource_ap646")
 environment = SubResource("Environment_tgly4")
 
 [node name="MainPlatform" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 material_override = SubResource("StandardMaterial3D_02b4t")
 size = Vector3(1000, 1, 1000)
 
@@ -102,7 +103,6 @@ shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1112, 5, 19.9184)
-visible = false
 light_color = Color(0.647059, 0.588235, 0.8, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -110,7 +110,6 @@ omni_range = 25.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8464, 5, 20.3598)
-visible = false
 light_color = Color(0.588235, 0.65098, 0.8, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -119,7 +118,6 @@ omni_attenuation = 1.5
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0851, 5, -20.0808)
-visible = false
 light_color = Color(0.705882, 0.705882, 0.8, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -128,7 +126,6 @@ omni_attenuation = 1.5
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5703, 5, -20.394)
-visible = false
 light_color = Color(0.588235, 0.8, 0.705882, 1)
 light_energy = 10.0
 shadow_enabled = true
@@ -137,7 +134,6 @@ omni_attenuation = 1.5
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.9452, 17.0023)
-visible = false
 light_color = Color(0.8, 0.8, 0.8, 1)
 light_energy = 10.0
 omni_range = 30.0
@@ -145,7 +141,7 @@ omni_range = 30.0
 [node name="DeliveryTubeSystem1" parent="." instance=ExtResource("5_3q5fd")]
 
 [node name="Pickup_Flashlight" parent="." instance=ExtResource("6_5qkxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9488, 1, 0)
 
 [node name="MagicalScale" parent="." instance=ExtResource("7_m8lkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)

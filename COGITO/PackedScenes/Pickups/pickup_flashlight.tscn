@@ -85,7 +85,7 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CylinderShape3D_3tojh")
 
 [node name="Detector_Mesh" type="Node3D" parent="CollisionShape3D"]
-transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CoreOrb" type="MeshInstance3D" parent="CollisionShape3D/Detector_Mesh"]
 mesh = SubResource("SphereMesh_xtycw")
@@ -100,9 +100,3 @@ mesh = SubResource("TorusMesh_s6y1e")
 [node name="OuterRing2" type="MeshInstance3D" parent="CollisionShape3D/Detector_Mesh"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 mesh = SubResource("TorusMesh_o62u5")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.724455, 0)
-light_indirect_energy = 0.2
-light_volumetric_fog_energy = 0.2
-sky_mode = 1
