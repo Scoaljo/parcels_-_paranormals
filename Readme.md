@@ -1,51 +1,46 @@
-![COGITO_banner](docs/Cogito_capsule_202402_jpg.jpg)
-# COGITO
-[![GodotEngine](https://img.shields.io/badge/Godot_4.2.1_stable-blue?logo=godotengine&logoColor=white)](https://godotengine.org/) [![COGITO](https://img.shields.io/badge/beta_202405-35A1D7?label=COGITO&labelColor=0E887A)](https://github.com/Phazorknight/Cogito)
-beta 202406.02
+# Parcels & Paranormals
+A first-person package sorting game created for GitHub Game Off 2024, built with Godot 4.2 and the COGITO Framework.
 
-## What is it?
-COGITO is a first Person Immersive Sim Template Project for Godot Engine 4.
-In comparison to other first person assets out there, which focus mostly on shooter mechanics, COGITO focuses on
-providing a framework for creating interactable objects and items.
+## About The Game
+In Parcels & Paranormals, you're a warehouse worker with an unusual task: sorting packages between the mortal and paranormal realms! Navigate through a mysterious sorting facility where you must quickly identify and properly route packages to their correct dimensional portals.
 
-COGITO is made by [Philip Drobar](https://www.philipdrobar.com) with help from [these contributors](https://github.com/Phazorknight/Cogito/graphs/contributors).
+### Key Features
+- First-person physics-based gameplay
+- Unique package types with special paranormal properties
+- Time-based scoring system
+- Portal-based sorting mechanics
+- Dynamic package handling system
 
-## Principles of this template
-The structure of this template always tries to adhere to the following principles:
-- **Complete**: When you download COGITO and press play, you get a functioning project out of the box. Game menu, save slot select, options and a playable level are all included.
-- **Versatile**: Wether your game is set in the future, the past or the present, use melee, projectile or no weapons at all, have low poly, stylized or realistic graphics, the template will have features for you.
-- **Modular**: Do not want to use a feature? You will be able to hide it, ignore it or strip it out without breaking COGITO. At the same time, COGITO is designed to be extendable with your own custom features or other add-ons.
-- **Approachable**: While there will always be a learning curve, we strive to make COGTIO approachable and intuitive to use, so it doesn't get in your way of making your game.
+## How to Play
+- **Movement**: WASD to move, Space to jump
+- **Interaction**: F to wield Void Detector
+- **Mouse**: LMB Pull, RMB Push
+- **ESC**: Pause menu
 
-## Current Features
-- First person player controller with:
-  - Sprinting, jumping, crouching, sliding, stairs handling, ladder handling
-  - Fully customizable attributes like Health, Stamina, Visibility (for stealth) - Component-based, so easy to add your own.
-  - Lots of exposed properties to tweak to your liking (speeds, headbob, fall damage, bunnyhop, etc.)
-  - Easy-to-use dynamic footstep sound system
-- Inventory System
-  - Flexible resource-based inventories
-  - Inventory UI separate from inventory logic
-  - Examples for multiple item types (consumables, keys, ammo, weapons, combinable Items)
-  - Base class to easily add your custom item types
-  - Slot-based (Minecraft) or grid-based (Resident Evil 4), the choice is yours!
-- Interaction System
-  - Component-based interactions makes it easy to turn your own objects interactive quickly and customize existing ones
-  - Examples for interactive objects like doors, drawers, carryables, turn-wheels, elevators, readable objects, keypads
-- Systemic Properties
-  - Give objects properties like "FLAMMABLE" or "WET" and they will interact with each other depending on their state and properties.
-  - For example FLAMMABLE objects can be ignited by objects that are actively on fire. Can be extinguished by objects that are WET.
-  - Straight forward system to add your own properties and behaviours, all handled in one script. Also easy to just ignore.
-- Quest System
-- Save and Load System as well as scene persistency
-- Full gamepad support!
-- Fully featured Demo Scene
-  - Set up like a game level including a variety of objects, weapons and quests
-  - In-game helper documents that explain how objects in the scene were set up
+### Gameplay Goal
+Sort packages correctly between the mortal (blue) and paranormal (pink) portals. Use the void detector, scale, and ectoplasm field to find special paranormal packages with unique properties! Complete your shifts as quickly as possible while maintaining accuracy.
 
-> [!IMPORTANT]  
-> COGITO is still under active develompent. While some features are pretty much set, others might change. Use at your own risk and check Issues and Discussion pages for more information.
+## Installation
+1. Download and install [Godot 4.2](https://godotengine.org/download)
+2. Clone this repository
+3. Open the project in Godot
+4. Run the game from the editor or export it for your platform
 
-## [Full documentation here!](https://cogito.readthedocs.io/en/latest/index.html)
+## Technical Details
+Built using:
+- Godot 4.2
+- COGITO Framework
 
-[Credits, Contributors and License](https://cogito.readthedocs.io/en/latest/about.html)
+## Credits
+- Built with the COGITO Framework
+- Additional game assets by loafbrr
+- Created for GitHub Game Off 2024
+
+## License
+MIT
+
+## Development Status
+Many things can be polished, but the game loop is there!
+
+---
+Created by Scoaljo
